@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		224BDF3021F31D680097BFD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BDF2F21F31D680097BFD0 /* AppDelegate.swift */; };
+		224BDF3221F31D680097BFD0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BDF3121F31D680097BFD0 /* FirstViewController.swift */; };
+		224BDF3521F31D680097BFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224BDF3321F31D680097BFD0 /* Main.storyboard */; };
+		224BDF3721F31D690097BFD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224BDF3621F31D690097BFD0 /* Assets.xcassets */; };
+		224BDF3A21F31D690097BFD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224BDF3821F31D690097BFD0 /* LaunchScreen.storyboard */; };
+		A70AE27021F6A11200CC0415 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE26E21F6A11200CC0415 /* MainTabbarController.swift */; };
+		A70AE27121F6A11200CC0415 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE26F21F6A11200CC0415 /* BaseNavigationController.swift */; };
+		A70AE27C21F6A12100CC0415 /* ImgBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE27321F6A12100CC0415 /* ImgBrowserViewController.swift */; };
+		A70AE27D21F6A12100CC0415 /* ImgBrowserPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE27521F6A12100CC0415 /* ImgBrowserPresentAnimator.swift */; };
+		A70AE27E21F6A12100CC0415 /* ImgBrowserDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE27621F6A12100CC0415 /* ImgBrowserDismissAnimator.swift */; };
+		A70AE28021F6A12100CC0415 /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE27821F6A12100CC0415 /* BrowserView.swift */; };
+		A70AE28321F6A12100CC0415 /* ImgBrowserTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE27B21F6A12100CC0415 /* ImgBrowserTransitionDelegate.swift */; };
+		A70AE28621F6A14000CC0415 /* PublicConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28521F6A14000CC0415 /* PublicConst.swift */; };
+		A70AE28821F6A26800CC0415 /* PhotoBroserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28721F6A26800CC0415 /* PhotoBroserViewController.swift */; };
+		A70AE28A21F6A28D00CC0415 /* BrowserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28921F6A28D00CC0415 /* BrowserCollectionViewCell.swift */; };
+		A70AE28C21F6A3A200CC0415 /* PhotoBrowserTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28B21F6A3A200CC0415 /* PhotoBrowserTransitionDelegate.swift */; };
+		A70AE28E21F6A3D400CC0415 /* PhotoBrowserPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28D21F6A3D400CC0415 /* PhotoBrowserPresentAnimator.swift */; };
+		A70AE29021F6A3FD00CC0415 /* PhotoBrowserDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28F21F6A3FD00CC0415 /* PhotoBrowserDismissAnimator.swift */; };
+		A70AE29221F6A43F00CC0415 /* PhotoBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE29121F6A43F00CC0415 /* PhotoBrowserView.swift */; };
+		A7D1D53721F8039500B675B3 /* BrowserCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53621F8039500B675B3 /* BrowserCollectionView.swift */; };
+		A7D1D53D21F89B4400B675B3 /* SideBarPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53921F89B4400B675B3 /* SideBarPresentAnimator.swift */; };
+		A7D1D53E21F89B4400B675B3 /* SideBarDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53A21F89B4400B675B3 /* SideBarDismissAnimator.swift */; };
+		A7D1D53F21F89B4400B675B3 /* SideBarTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53B21F89B4400B675B3 /* SideBarTransitionDelegate.swift */; };
+		A7D1D54021F89B4400B675B3 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53C21F89B4400B675B3 /* SideBarViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		224BDF2C21F31D680097BFD0 /* GHPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		224BDF2F21F31D680097BFD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		224BDF3121F31D680097BFD0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		224BDF3421F31D680097BFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		224BDF3621F31D690097BFD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		224BDF3921F31D690097BFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		224BDF3B21F31D690097BFD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A70AE26E21F6A11200CC0415 /* MainTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
+		A70AE26F21F6A11200CC0415 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		A70AE27321F6A12100CC0415 /* ImgBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgBrowserViewController.swift; sourceTree = "<group>"; };
+		A70AE27521F6A12100CC0415 /* ImgBrowserPresentAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgBrowserPresentAnimator.swift; sourceTree = "<group>"; };
+		A70AE27621F6A12100CC0415 /* ImgBrowserDismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgBrowserDismissAnimator.swift; sourceTree = "<group>"; };
+		A70AE27821F6A12100CC0415 /* BrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
+		A70AE27B21F6A12100CC0415 /* ImgBrowserTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgBrowserTransitionDelegate.swift; sourceTree = "<group>"; };
+		A70AE28521F6A14000CC0415 /* PublicConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicConst.swift; sourceTree = "<group>"; };
+		A70AE28721F6A26800CC0415 /* PhotoBroserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBroserViewController.swift; sourceTree = "<group>"; };
+		A70AE28921F6A28D00CC0415 /* BrowserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserCollectionViewCell.swift; sourceTree = "<group>"; };
+		A70AE28B21F6A3A200CC0415 /* PhotoBrowserTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserTransitionDelegate.swift; sourceTree = "<group>"; };
+		A70AE28D21F6A3D400CC0415 /* PhotoBrowserPresentAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserPresentAnimator.swift; sourceTree = "<group>"; };
+		A70AE28F21F6A3FD00CC0415 /* PhotoBrowserDismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserDismissAnimator.swift; sourceTree = "<group>"; };
+		A70AE29121F6A43F00CC0415 /* PhotoBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserView.swift; sourceTree = "<group>"; };
+		A7D1D53621F8039500B675B3 /* BrowserCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserCollectionView.swift; sourceTree = "<group>"; };
+		A7D1D53921F89B4400B675B3 /* SideBarPresentAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarPresentAnimator.swift; sourceTree = "<group>"; };
+		A7D1D53A21F89B4400B675B3 /* SideBarDismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarDismissAnimator.swift; sourceTree = "<group>"; };
+		A7D1D53B21F89B4400B675B3 /* SideBarTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTransitionDelegate.swift; sourceTree = "<group>"; };
+		A7D1D53C21F89B4400B675B3 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		224BDF2921F31D680097BFD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		224BDF2321F31D680097BFD0 = {
+			isa = PBXGroup;
+			children = (
+				224BDF2E21F31D680097BFD0 /* GHPhotoBrowser */,
+				224BDF2D21F31D680097BFD0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		224BDF2D21F31D680097BFD0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				224BDF2C21F31D680097BFD0 /* GHPhotoBrowser.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		224BDF2E21F31D680097BFD0 /* GHPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				224BDF2F21F31D680097BFD0 /* AppDelegate.swift */,
+				224BDF3121F31D680097BFD0 /* FirstViewController.swift */,
+				A7D1D53821F8990F00B675B3 /* SideBar */,
+				A70AE26B21F6A02600CC0415 /* PhotoBrowser */,
+				A70AE27221F6A12100CC0415 /* ModalImgBrowser */,
+				A70AE26D21F6A11200CC0415 /* Base */,
+				A70AE28421F6A14000CC0415 /* Public */,
+				224BDF3321F31D680097BFD0 /* Main.storyboard */,
+				224BDF3621F31D690097BFD0 /* Assets.xcassets */,
+				224BDF3821F31D690097BFD0 /* LaunchScreen.storyboard */,
+				224BDF3B21F31D690097BFD0 /* Info.plist */,
+			);
+			path = GHPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		A70AE26B21F6A02600CC0415 /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				A70AE28721F6A26800CC0415 /* PhotoBroserViewController.swift */,
+				A7D1D53621F8039500B675B3 /* BrowserCollectionView.swift */,
+				A70AE29121F6A43F00CC0415 /* PhotoBrowserView.swift */,
+				A70AE28921F6A28D00CC0415 /* BrowserCollectionViewCell.swift */,
+				A70AE28B21F6A3A200CC0415 /* PhotoBrowserTransitionDelegate.swift */,
+				A70AE28D21F6A3D400CC0415 /* PhotoBrowserPresentAnimator.swift */,
+				A70AE28F21F6A3FD00CC0415 /* PhotoBrowserDismissAnimator.swift */,
+			);
+			path = PhotoBrowser;
+			sourceTree = "<group>";
+		};
+		A70AE26D21F6A11200CC0415 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A70AE26E21F6A11200CC0415 /* MainTabbarController.swift */,
+				A70AE26F21F6A11200CC0415 /* BaseNavigationController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		A70AE27221F6A12100CC0415 /* ModalImgBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				A70AE27321F6A12100CC0415 /* ImgBrowserViewController.swift */,
+				A70AE27521F6A12100CC0415 /* ImgBrowserPresentAnimator.swift */,
+				A70AE27621F6A12100CC0415 /* ImgBrowserDismissAnimator.swift */,
+				A70AE27821F6A12100CC0415 /* BrowserView.swift */,
+				A70AE27B21F6A12100CC0415 /* ImgBrowserTransitionDelegate.swift */,
+			);
+			name = ModalImgBrowser;
+			path = GHPhotoBrowser/ModalImgBrowser;
+			sourceTree = SOURCE_ROOT;
+		};
+		A70AE28421F6A14000CC0415 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				A70AE28521F6A14000CC0415 /* PublicConst.swift */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		A7D1D53821F8990F00B675B3 /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				A7D1D53A21F89B4400B675B3 /* SideBarDismissAnimator.swift */,
+				A7D1D53C21F89B4400B675B3 /* SideBarViewController.swift */,
+				A7D1D53921F89B4400B675B3 /* SideBarPresentAnimator.swift */,
+				A7D1D53B21F89B4400B675B3 /* SideBarTransitionDelegate.swift */,
+			);
+			path = SideBar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		224BDF2B21F31D680097BFD0 /* GHPhotoBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 224BDF3E21F31D690097BFD0 /* Build configuration list for PBXNativeTarget "GHPhotoBrowser" */;
+			buildPhases = (
+				224BDF2821F31D680097BFD0 /* Sources */,
+				224BDF2921F31D680097BFD0 /* Frameworks */,
+				224BDF2A21F31D680097BFD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GHPhotoBrowser;
+			productName = GHPhotoBrowser;
+			productReference = 224BDF2C21F31D680097BFD0 /* GHPhotoBrowser.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		224BDF2421F31D680097BFD0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = jinjin;
+				TargetAttributes = {
+					224BDF2B21F31D680097BFD0 = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 224BDF2721F31D680097BFD0 /* Build configuration list for PBXProject "GHPhotoBrowser" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 224BDF2321F31D680097BFD0;
+			productRefGroup = 224BDF2D21F31D680097BFD0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				224BDF2B21F31D680097BFD0 /* GHPhotoBrowser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		224BDF2A21F31D680097BFD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224BDF3A21F31D690097BFD0 /* LaunchScreen.storyboard in Resources */,
+				224BDF3721F31D690097BFD0 /* Assets.xcassets in Resources */,
+				224BDF3521F31D680097BFD0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		224BDF2821F31D680097BFD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7D1D53F21F89B4400B675B3 /* SideBarTransitionDelegate.swift in Sources */,
+				A70AE28E21F6A3D400CC0415 /* PhotoBrowserPresentAnimator.swift in Sources */,
+				A70AE27121F6A11200CC0415 /* BaseNavigationController.swift in Sources */,
+				A70AE28A21F6A28D00CC0415 /* BrowserCollectionViewCell.swift in Sources */,
+				A70AE28021F6A12100CC0415 /* BrowserView.swift in Sources */,
+				A7D1D53721F8039500B675B3 /* BrowserCollectionView.swift in Sources */,
+				A70AE28321F6A12100CC0415 /* ImgBrowserTransitionDelegate.swift in Sources */,
+				224BDF3221F31D680097BFD0 /* FirstViewController.swift in Sources */,
+				A70AE28621F6A14000CC0415 /* PublicConst.swift in Sources */,
+				A70AE28C21F6A3A200CC0415 /* PhotoBrowserTransitionDelegate.swift in Sources */,
+				224BDF3021F31D680097BFD0 /* AppDelegate.swift in Sources */,
+				A7D1D53D21F89B4400B675B3 /* SideBarPresentAnimator.swift in Sources */,
+				A70AE27E21F6A12100CC0415 /* ImgBrowserDismissAnimator.swift in Sources */,
+				A7D1D54021F89B4400B675B3 /* SideBarViewController.swift in Sources */,
+				A70AE29221F6A43F00CC0415 /* PhotoBrowserView.swift in Sources */,
+				A70AE28821F6A26800CC0415 /* PhotoBroserViewController.swift in Sources */,
+				A70AE27D21F6A12100CC0415 /* ImgBrowserPresentAnimator.swift in Sources */,
+				A7D1D53E21F89B4400B675B3 /* SideBarDismissAnimator.swift in Sources */,
+				A70AE29021F6A3FD00CC0415 /* PhotoBrowserDismissAnimator.swift in Sources */,
+				A70AE27021F6A11200CC0415 /* MainTabbarController.swift in Sources */,
+				A70AE27C21F6A12100CC0415 /* ImgBrowserViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		224BDF3321F31D680097BFD0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				224BDF3421F31D680097BFD0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		224BDF3821F31D690097BFD0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				224BDF3921F31D690097BFD0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		224BDF3C21F31D690097BFD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		224BDF3D21F31D690097BFD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		224BDF3F21F31D690097BFD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YDJE97CX57;
+				INFOPLIST_FILE = GHPhotoBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "--.GHPhotoBrowser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		224BDF4021F31D690097BFD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YDJE97CX57;
+				INFOPLIST_FILE = GHPhotoBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "--.GHPhotoBrowser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		224BDF2721F31D680097BFD0 /* Build configuration list for PBXProject "GHPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				224BDF3C21F31D690097BFD0 /* Debug */,
+				224BDF3D21F31D690097BFD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		224BDF3E21F31D690097BFD0 /* Build configuration list for PBXNativeTarget "GHPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				224BDF3F21F31D690097BFD0 /* Debug */,
+				224BDF4021F31D690097BFD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 224BDF2421F31D680097BFD0 /* Project object */;
+}
