@@ -39,7 +39,7 @@ class SideBarViewController: UIViewController {
     @objc func panAction(gesture: UIPanGestureRecognizer) {
         let transitionPoint = gesture.translation(in: view)
         if transitionPoint.x < 0 {
-            print(transitionPoint.x)
+//            print(transitionPoint.x)
             let percent = abs(transitionPoint.x) / view.bounds.width
             switch gesture.state {
             case .began:

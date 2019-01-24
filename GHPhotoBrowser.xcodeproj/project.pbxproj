@@ -31,6 +31,7 @@
 		A7D1D53E21F89B4400B675B3 /* SideBarDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53A21F89B4400B675B3 /* SideBarDismissAnimator.swift */; };
 		A7D1D53F21F89B4400B675B3 /* SideBarTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53B21F89B4400B675B3 /* SideBarTransitionDelegate.swift */; };
 		A7D1D54021F89B4400B675B3 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53C21F89B4400B675B3 /* SideBarViewController.swift */; };
+		A7D1D54221F97F3E00B675B3 /* PanPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D54121F97F3E00B675B3 /* PanPhotoDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		A7D1D53A21F89B4400B675B3 /* SideBarDismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarDismissAnimator.swift; sourceTree = "<group>"; };
 		A7D1D53B21F89B4400B675B3 /* SideBarTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTransitionDelegate.swift; sourceTree = "<group>"; };
 		A7D1D53C21F89B4400B675B3 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		A7D1D54121F97F3E00B675B3 /* PanPhotoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanPhotoDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				A70AE28B21F6A3A200CC0415 /* PhotoBrowserTransitionDelegate.swift */,
 				A70AE28D21F6A3D400CC0415 /* PhotoBrowserPresentAnimator.swift */,
 				A70AE28F21F6A3FD00CC0415 /* PhotoBrowserDismissAnimator.swift */,
+				A7D1D54121F97F3E00B675B3 /* PanPhotoDelegate.swift */,
 			);
 			path = PhotoBrowser;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				A70AE29221F6A43F00CC0415 /* PhotoBrowserView.swift in Sources */,
 				A70AE28821F6A26800CC0415 /* PhotoBroserViewController.swift in Sources */,
 				A70AE27D21F6A12100CC0415 /* ImgBrowserPresentAnimator.swift in Sources */,
+				A7D1D54221F97F3E00B675B3 /* PanPhotoDelegate.swift in Sources */,
 				A7D1D53E21F89B4400B675B3 /* SideBarDismissAnimator.swift in Sources */,
 				A70AE29021F6A3FD00CC0415 /* PhotoBrowserDismissAnimator.swift in Sources */,
 				A70AE27021F6A11200CC0415 /* MainTabbarController.swift in Sources */,

@@ -27,10 +27,6 @@ class FirstViewController: UIViewController {
     let imgBrowserTransitionDelegate = ImgBrowserTransitionDelegate()
     /////////////
     
-    ///多图模式
-    let photoBrowserTransitionDelegate = PhotoBrowserTransitionDelegate()
-    ///
-    
     lazy var tap: UITapGestureRecognizer = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         return tap
@@ -62,7 +58,7 @@ class FirstViewController: UIViewController {
     @objc func edgePanAction(gesture: UIScreenEdgePanGestureRecognizer) {
         let transitionPoint = gesture.translation(in: view)
         let percent = transitionPoint.x / view.bounds.width
-        print("\(transitionPoint.x) ---- \(percent)")
+//        print("\(transitionPoint.x) ---- \(percent)")
         switch gesture.state {
         case .began:
             let vc = SideBarViewController()
@@ -112,26 +108,20 @@ class FirstViewController: UIViewController {
         let frame1 = view.convert(imgView1.frame, to: UIApplication.shared.keyWindow)
         let frame2 = view.convert(imgView2.frame, to: UIApplication.shared.keyWindow)
         let frame3 = view.convert(imgView3.frame, to: UIApplication.shared.keyWindow)
-        vc.currentPage = 0
+        vc.currentPage = Int(arc4random_uniform(4))//生成一个从0到3的随机数
         vc.imgAry = [UIImage(named: "test"), UIImage(named: "test1"), UIImage(named: "test2"), UIImage(named: "test3")] as! [UIImage]
         vc.imgViewFrameAry = [frame, frame1, frame2, frame3]
-        vc.modalPresentationStyle = .custom
-        vc.transitioningDelegate = photoBrowserTransitionDelegate
-        present(vc, animated: true) {
-            //转场到图片浏览控制器界面，设置状态栏隐藏
-            //note: 接口封装还没做好，所有操作是对模态的图片控制器最好，
-            //但不知道为什么对模态控制器进行这样的状态栏隐藏显示设置不行，
-            //暂时隐藏显示操作的是presentingVC(即FirstViewController)的状态栏，不利于封装
-            self.hiddenStatusBar = true
-            self.setNeedsStatusBarAppearanceUpdate()
-        }
+        vc.presentingVC = self
+        vc.show()
+//        present(vc, animated: true) {
+//            //转场到图片浏览控制器界面，设置状态栏隐藏
+//            //note: 接口封装还没做好，所有操作是对模态的图片控制器最好，
+//            //但不知道为什么对模态控制器进行这样的状态栏隐藏显示设置不行，
+//            //暂时隐藏显示操作的是presentingVC(即FirstViewController)的状态栏，不利于封装
+//            self.hiddenStatusBar = true
+//            self.setNeedsStatusBarAppearanceUpdate()
+//        }
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return hiddenStatusBar
-    }
-    var hiddenStatusBar = false
-    
 
 }
 

@@ -39,6 +39,9 @@ class BrowserCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         browserView.setZoomScale(1.0, animated: false)
-        
+    }
+    
+    deinit {
+        print("=========== deinit: \(self.classForCoder)")
     }
 }

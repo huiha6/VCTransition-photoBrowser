@@ -16,6 +16,15 @@ class PhotoBroserViewController: UIViewController {
     var currentPage: Int = 0
     var imgAry = [UIImage]()
     
+    var presentingVC: UIViewController?
+    public func show() {
+        transitioningDelegate = photoBrowserTransitionDelegate
+        modalPresentationStyle = .custom
+        presentingVC?.present(self, animated: true, completion: {
+            
+        })
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
@@ -33,8 +42,11 @@ class PhotoBroserViewController: UIViewController {
         view.addSubview(pageControl)
         view.addSubview(moveView)
         view.addGestureRecognizer(pan)
+        pageControl.currentPage = currentPage
         moveView.frame = imgViewFrameAry[currentPage]
         moveView.image = imgAry[currentPage]
+        let targetOffset = CGFloat(currentPage) * (kScreenWidth+lineSpace)
+        browserCollectionView.setContentOffset(CGPoint(x: targetOffset, y: 0), animated: false)
     }
     //MARK: - action method
     
@@ -81,89 +93,121 @@ class PhotoBroserViewController: UIViewController {
     var panDirection: PanDirectionType = .unKnown
     var offsetH: CGFloat = 0.0
     var isTapDismiss = false
+    var isCancelTransition = false
+    
 
     deinit {
         print("=========== deinit: \(self.classForCoder)")
     }
 }
 
-extension PhotoBroserViewController {
+extension PhotoBroserViewController: PanPhotoDelegate {
+    func panBegan(_ locationPoint: CGPoint) {
+        let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
+        let browserView = cell.browserView
+        
+        orgPoint = locationPoint
+        offsetH = 0.0
+        beganPanPoint = locationPoint
+        
+        moveView.frame.size = browserView.orgImgViewSize
+        moveView.center = browserView.orgImgViewCenter
+        moveView.image = imgAry[currentPage]
+        moveView.isHidden = false
+        browserCollectionView.isHidden = true
+        pageControl.isHidden = true
+        
+        photoBrowserTransitionDelegate = transitioningDelegate as! PhotoBrowserTransitionDelegate
+        photoBrowserTransitionDelegate.interactive = true
+        dismiss(animated: true) {
+        }
+    }
+    
+    func panChanged(_ locationPoint: CGPoint) {
+        let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
+        let browserView = cell.browserView
+        
+        let offsetY = locationPoint.y - orgPoint.y
+        if offsetY > 0 {//向下拖
+            if panDirection == .unKnown {
+                panDirection = .down
+            }
+            if panDirection == .down {
+                offsetH += abs(offsetY)
+            }else if panDirection == .up {
+                offsetH -= abs(offsetY)
+                if moveView.frame.width >= browserView.orgImgViewSize.width {
+                    panDirection = .down
+                }
+            }
+        }else{//向上拖
+            if panDirection == .unKnown {
+                panDirection = .up
+            }
+            if panDirection == .up {
+                offsetH += abs(offsetY)
+            }else if panDirection == .down {
+                offsetH -= abs(offsetY)
+                if moveView.frame.width >= browserView.orgImgViewSize.width {
+                    panDirection = .up
+                }
+            }
+        }
+        //拖动时图片的宽高按比例缩放
+        let w = browserView.orgImgViewSize.width - (browserView.orgImgViewSize.width - minImgViewWidth)*(min(offsetH, maxOffsetH) / maxOffsetH)
+        let imgSize = browserView.orgImgViewSize
+        let h = ((imgSize.height)/(imgSize.width))*w
+        moveView.frame.size = CGSize(width: w, height: h)
+        //拖动时手指拖动点与图片中心点的距离与宽高变化关系
+        let centerX = (browserView.orgImgViewCenter.x - beganPanPoint.x)/browserView.orgImgViewSize.width*w + locationPoint.x
+        let centerY = (browserView.orgImgViewCenter.y - beganPanPoint.y)/browserView.orgImgViewSize.height*h + locationPoint.y
+        moveView.center = CGPoint(x: centerX, y: centerY)
+        //松手的时候往反方向扫动  则放弃dismiss转场
+        if offsetY > 0 {//向下拖
+            if panDirection == .down {
+                isCancelTransition = false
+            }else{
+                isCancelTransition = true
+            }
+        }else{//向上拖
+            if panDirection == .up {
+                isCancelTransition = false
+            }else{
+                isCancelTransition = true
+            }
+        }
+
+        orgPoint = locationPoint
+        let percent = min(offsetH, maxOffsetH) / maxOffsetH
+        photoBrowserTransitionDelegate.interactionController.update(percent)
+    }
+    
+    func panCancelledOfEnded() {
+        let percent = min(offsetH, maxOffsetH) / maxOffsetH
+        if percent > 0.4 {
+            if isCancelTransition {
+                photoBrowserTransitionDelegate.interactionController.cancel()
+            }else{
+                photoBrowserTransitionDelegate.interactionController.finish()
+            }
+        }else{
+            photoBrowserTransitionDelegate.interactionController.cancel()
+        }
+        photoBrowserTransitionDelegate.interactive = false
+        panDirection = .unKnown
+    }
+    
     @objc func panAction(gesture: UIPanGestureRecognizer) {
         let locationPoint = gesture.location(in: view)
         switch gesture.state {
         case .began:
-            let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
-            let browserView = cell.browserView
-
-            orgPoint = locationPoint
-            offsetH = 0.0
-            beganPanPoint = locationPoint
-            
-            moveView.frame.size = browserView.orgImgViewSize
-            moveView.center = browserView.orgImgViewCenter
-            moveView.image = imgAry[currentPage]
-            moveView.isHidden = false
-            browserCollectionView.isHidden = true
-            pageControl.isHidden = true
-            
-            photoBrowserTransitionDelegate = transitioningDelegate as! PhotoBrowserTransitionDelegate
-            photoBrowserTransitionDelegate.interactive = true
-            dismiss(animated: true) {
-            }
+            panBegan(locationPoint)
             break
         case .changed:
-            let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
-            let browserView = cell.browserView
-
-            let offsetY = locationPoint.y - orgPoint.y
-            if offsetY > 0 {//向下拖
-                if panDirection == .unKnown {
-                    panDirection = .down
-                }
-                if panDirection == .down {
-                    offsetH += abs(offsetY)
-                }else if panDirection == .up {
-                    offsetH -= abs(offsetY)
-                    if moveView.frame.width >= browserView.orgImgViewSize.width {
-                        panDirection = .down
-                    }
-                }
-            }else{//向上拖
-                if panDirection == .unKnown {
-                    panDirection = .up
-                }
-                if panDirection == .up {
-                    offsetH += abs(offsetY)
-                }else if panDirection == .down {
-                    offsetH -= abs(offsetY)
-                    if moveView.frame.width >= browserView.orgImgViewSize.width {
-                        panDirection = .up
-                    }
-                }
-            }
-            //拖动时图片的宽高按比例缩放
-            let w = browserView.orgImgViewSize.width - (browserView.orgImgViewSize.width - minImgViewWidth)*(min(offsetH, maxOffsetH) / maxOffsetH)
-            let imgSize = browserView.orgImgViewSize
-            let h = ((imgSize.height)/(imgSize.width))*w
-            moveView.frame.size = CGSize(width: w, height: h)
-            //拖动时手指拖动点与图片中心点的距离与宽高变化关系
-            let centerX = (browserView.orgImgViewCenter.x - beganPanPoint.x)/browserView.orgImgViewSize.width*w + locationPoint.x
-            let centerY = (browserView.orgImgViewCenter.y - beganPanPoint.y)/browserView.orgImgViewSize.height*h + locationPoint.y
-            moveView.center = CGPoint(x: centerX, y: centerY)
-            
-            orgPoint = locationPoint
-            let percent = min(offsetH, maxOffsetH) / maxOffsetH
-            photoBrowserTransitionDelegate.interactionController.update(percent)
+            panChanged(locationPoint)
             break
         case .cancelled, .ended:
-            panDirection = .unKnown
-            let percent = min(offsetH, maxOffsetH) / maxOffsetH
-            if percent > 0.15 {
-                photoBrowserTransitionDelegate.interactionController.finish()
-            }else{
-                photoBrowserTransitionDelegate.interactionController.cancel()
-            }
-            photoBrowserTransitionDelegate.interactive = false
+            panCancelledOfEnded()
             break
         default:
             break
@@ -178,6 +222,7 @@ extension PhotoBroserViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BrowserCollectionViewCell", for: indexPath) as! BrowserCollectionViewCell
+        cell.browserView.panDelegate = self
         cell.tapDismissClosure = {[weak self] in
             self?.isTapDismiss = true
             self?.dismiss(animated: true, completion: {

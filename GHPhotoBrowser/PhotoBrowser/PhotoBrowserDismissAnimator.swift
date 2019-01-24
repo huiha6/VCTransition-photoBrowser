@@ -14,11 +14,9 @@ class PhotoBrowserDismissAnimator: NSObject, UIViewControllerAnimatedTransitioni
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let tabbarC = transitionContext.viewController(forKey: .to) as! UITabBarController
-        let navC = tabbarC.selectedViewController as! UINavigationController
-        let toVC = navC.viewControllers.first as! FirstViewController
-        toVC.hiddenStatusBar = false
-        toVC.setNeedsStatusBarAppearanceUpdate()
+//        let tabbarC = transitionContext.viewController(forKey: .to) as! UITabBarController
+//        let navC = tabbarC.selectedViewController as! UINavigationController
+//        let toVC = navC.viewControllers.first as! FirstViewController
 
         let fromVC = transitionContext.viewController(forKey: .from) as! PhotoBroserViewController
         let moveView = fromVC.moveView//browserView.imgView
@@ -42,16 +40,12 @@ class PhotoBrowserDismissAnimator: NSObject, UIViewControllerAnimatedTransitioni
                 fromView?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             }) { (finished) in
                 if transitionContext.transitionWasCancelled {
-                    toVC.hiddenStatusBar = true
-                    toVC.setNeedsStatusBarAppearanceUpdate()
-
                     let cell = fromVC.browserCollectionView.cellForItem(at: IndexPath(item: fromVC.currentPage, section: 0)) as! BrowserCollectionViewCell
                     UIView.animate(withDuration: 0.2, animations: {
                         fromView?.backgroundColor = UIColor.black.withAlphaComponent(1.0)
                         moveView.frame.size = cell.browserView.orgImgViewSize
                         moveView.center = cell.browserView.orgImgViewCenter
                     }, completion: { (_) in
-//                        cell.browserView.isScrollEnabled = true
                         moveView.isHidden = true
                         fromVC.browserCollectionView.isHidden = false
                         fromVC.pageControl.isHidden = false
@@ -60,10 +54,13 @@ class PhotoBrowserDismissAnimator: NSObject, UIViewControllerAnimatedTransitioni
                 }else{
                     let theFrame = fromVC.imgViewFrameAry[fromVC.currentPage]
                     UIView.animate(withDuration: 0.2, animations: {
-                        fromView?.backgroundColor = UIColor.black.withAlphaComponent(0.0)
                         moveView.frame = theFrame
                     }, completion: { (_) in
-                        transitionContext.completeTransition(true)
+                        UIView.animate(withDuration: 0.2, animations: {
+                            fromView?.backgroundColor = UIColor.black.withAlphaComponent(0.0)
+                        }, completion: { (_) in
+                            transitionContext.completeTransition(true)
+                        })
                     })
                 }
             }
