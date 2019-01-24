@@ -30,6 +30,11 @@ class FirstViewController: UIViewController {
     ///多图模式
     let photoBrowserTransitionDelegate = PhotoBrowserTransitionDelegate()
     ///
+    
+    lazy var tap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        return tap
+    }()
 
     @IBOutlet weak var imgView1: UIImageView!
     @IBOutlet weak var imgView2: UIImageView!
@@ -50,6 +55,7 @@ class FirstViewController: UIViewController {
         view.addSubview(imgView)
         
         view.addGestureRecognizer(edgePan)
+        view.addGestureRecognizer(tap)
     }
 
     //MARK: - 左边缘右滑-侧边栏
@@ -68,7 +74,7 @@ class FirstViewController: UIViewController {
         case .changed:
             modalTransitionDelegate.interactionController.update(percent)
         case .cancelled, .ended:
-            if percent < 0.3 {
+            if percent < 0.2 {
                 modalTransitionDelegate.interactionController.cancel()
             }else {
                 modalTransitionDelegate.interactionController.finish()
@@ -79,9 +85,8 @@ class FirstViewController: UIViewController {
         }
     }
     //MARK: - 图片浏览转场
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        let point =  touches.first?.location(in: view)
-        
+    @objc func tapAction(gesture: UITapGestureRecognizer) {
+//        let point = gesture.location(in: view)
         /* note 初试
          单张图片的 尝试
          *///
@@ -102,7 +107,6 @@ class FirstViewController: UIViewController {
         /* note  初试后的多图尝试
          多张图片的尝试   包括宽大于高的图片、高大于宽的图片，没有长图(即 在没放大的模式下可上下滑动的长图)
          *///
-        /*
         let vc = PhotoBroserViewController()
         let frame = view.convert(imgView.frame, to: UIApplication.shared.keyWindow)
         let frame1 = view.convert(imgView1.frame, to: UIApplication.shared.keyWindow)
@@ -121,7 +125,6 @@ class FirstViewController: UIViewController {
             self.hiddenStatusBar = true
             self.setNeedsStatusBarAppearanceUpdate()
         }
-        */
     }
 
     override var prefersStatusBarHidden: Bool {

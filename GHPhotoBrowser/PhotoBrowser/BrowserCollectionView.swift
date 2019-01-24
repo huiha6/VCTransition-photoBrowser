@@ -13,7 +13,7 @@ class BrowserCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         backgroundColor = UIColor.black
-        decelerationRate = 0.9
+        decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.9)
     }
     
     required init?(coder aDecoder: NSCoder) {

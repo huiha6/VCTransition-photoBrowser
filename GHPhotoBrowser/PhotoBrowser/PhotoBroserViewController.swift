@@ -41,7 +41,7 @@ class PhotoBroserViewController: UIViewController {
     //MARK: - lazy load
     lazy var browserCollectionView: BrowserCollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = lineSpace//单元格cell间距
         flowLayout.itemSize = CGSize(width: kScreenWidth, height: kScreenHeight)
