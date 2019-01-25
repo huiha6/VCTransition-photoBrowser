@@ -17,6 +17,9 @@ class PhotoBrowserDismissAnimator: NSObject, UIViewControllerAnimatedTransitioni
 //        let tabbarC = transitionContext.viewController(forKey: .to) as! UITabBarController
 //        let navC = tabbarC.selectedViewController as! UINavigationController
 //        let toVC = navC.viewControllers.first as! FirstViewController
+        
+        let containerView = transitionContext.containerView
+        containerView.window?.windowLevel = UIWindow.Level(rawValue: 0)
 
         let fromVC = transitionContext.viewController(forKey: .from) as! PhotoBroserViewController
         let moveView = fromVC.moveView//browserView.imgView
@@ -40,6 +43,7 @@ class PhotoBrowserDismissAnimator: NSObject, UIViewControllerAnimatedTransitioni
                 fromView?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             }) { (finished) in
                 if transitionContext.transitionWasCancelled {
+                    containerView.window?.windowLevel = UIWindow.Level.statusBar + 1
                     let cell = fromVC.browserCollectionView.cellForItem(at: IndexPath(item: fromVC.currentPage, section: 0)) as! BrowserCollectionViewCell
                     UIView.animate(withDuration: 0.2, animations: {
                         fromView?.backgroundColor = UIColor.black.withAlphaComponent(1.0)
