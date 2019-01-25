@@ -9,7 +9,7 @@
 import UIKit
 
 class PhotoBroserViewController: UIViewController {
-    var photoBrowserTransitionDelegate = PhotoBrowserTransitionDelegate()
+    let photoBrowserTransitionDelegate = PhotoBrowserTransitionDelegate()
     
     let lineSpace: CGFloat = 20
     var imgViewFrameAry = [CGRect]()
@@ -21,7 +21,6 @@ class PhotoBroserViewController: UIViewController {
         transitioningDelegate = photoBrowserTransitionDelegate
         modalPresentationStyle = .custom
         presentingVC?.present(self, animated: true, completion: {
-            
         })
     }
 
@@ -29,12 +28,6 @@ class PhotoBroserViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
         setupUI()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
     func setupUI() {
         view.addSubview(browserCollectionView)
@@ -47,7 +40,6 @@ class PhotoBroserViewController: UIViewController {
         let targetOffset = CGFloat(currentPage) * (kScreenWidth+lineSpace)
         browserCollectionView.setContentOffset(CGPoint(x: targetOffset, y: 0), animated: false)
     }
-    //MARK: - action method
     
     //MARK: - lazy load
     lazy var browserCollectionView: BrowserCollectionView = {
@@ -70,31 +62,32 @@ class PhotoBroserViewController: UIViewController {
         pageC.numberOfPages = imgAry.count
         return pageC
     }()
-    
     lazy var pan: UIPanGestureRecognizer = {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         return pan
     }()
+    //moveView作为转场时图片操作替代对象
     lazy var moveView: UIImageView = {
         let v = UIImageView(frame: CGRect.zero)
         return v
     }()
 
     //MARK: - 拖动相关计算存储属性
+    enum PanDirectionType {
+        case unKnown, up, down
+    }
     var maxOffsetH = kScreenHeight/2
     let minImgViewWidth: CGFloat = 80
     var beganPanPoint = CGPoint.zero
     var orgPoint = CGPoint.zero
-    enum PanDirectionType {
-        case unKnown, up, down
-    }
     //刚开始拖动方向
     var panDirection: PanDirectionType = .unKnown
     var offsetH: CGFloat = 0.0
-    var isTapDismiss = false
+    //拖动时取消
     var isCancelTransition = false
+    weak var animatorCoordinator: PhotoBrowserMaskController?
+    var transitionContainerView: UIView?
     
-
     deinit {
         print("=========== deinit: \(self.classForCoder)")
     }
@@ -116,10 +109,7 @@ extension PhotoBroserViewController: PanPhotoDelegate {
         browserCollectionView.isHidden = true
         pageControl.isHidden = true
         
-        photoBrowserTransitionDelegate = transitioningDelegate as! PhotoBrowserTransitionDelegate
-        photoBrowserTransitionDelegate.interactive = true
-        dismiss(animated: true) {
-        }
+        transitionContainerView?.window?.windowLevel = UIWindow.Level(rawValue: 0)
     }
     
     func panChanged(_ locationPoint: CGPoint) {
@@ -178,21 +168,44 @@ extension PhotoBroserViewController: PanPhotoDelegate {
 
         orgPoint = locationPoint
         let percent = min(offsetH, maxOffsetH) / maxOffsetH
-        photoBrowserTransitionDelegate.interactionController.update(percent)
+//        print(percent)
+        animatorCoordinator?.maskView.backgroundColor = UIColor.black.withAlphaComponent(1.0 - percent)
     }
     
     func panCancelledOfEnded() {
         let percent = min(offsetH, maxOffsetH) / maxOffsetH
-        if percent > 0.4 {
+        if percent > 0.2 {
             if isCancelTransition {
-                photoBrowserTransitionDelegate.interactionController.cancel()
+                let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
+                transitionContainerView?.window?.windowLevel = UIWindow.Level.statusBar + 1
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.animatorCoordinator?.maskView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
+                    self.moveView.frame.size = cell.browserView.orgImgViewSize
+                    self.moveView.center = cell.browserView.orgImgViewCenter
+                }) { (_) in
+                    self.browserCollectionView.isHidden = false
+                    self.moveView.isHidden = true
+                    self.pageControl.isHidden = false
+                }
             }else{
-                photoBrowserTransitionDelegate.interactionController.finish()
+                transitionContainerView?.window?.windowLevel = UIWindow.Level(rawValue: 0)
+                dismiss(animated: true) {
+                    
+                }
             }
         }else{
-            photoBrowserTransitionDelegate.interactionController.cancel()
+            let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
+            transitionContainerView?.window?.windowLevel = UIWindow.Level.statusBar + 1
+            UIView.animate(withDuration: 0.25, animations: {
+                self.animatorCoordinator?.maskView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
+                self.moveView.frame.size = cell.browserView.orgImgViewSize
+                self.moveView.center = cell.browserView.orgImgViewCenter
+            }) { (_) in
+                self.browserCollectionView.isHidden = false
+                self.moveView.isHidden = true
+                self.pageControl.isHidden = false
+            }
         }
-        photoBrowserTransitionDelegate.interactive = false
         panDirection = .unKnown
     }
     
@@ -223,7 +236,7 @@ extension PhotoBroserViewController: UICollectionViewDataSource, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BrowserCollectionViewCell", for: indexPath) as! BrowserCollectionViewCell
         cell.browserView.panDelegate = self
         cell.tapDismissClosure = {[weak self] in
-            self?.isTapDismiss = true
+            self?.transitionContainerView?.window?.windowLevel = UIWindow.Level(rawValue: 0)
             self?.dismiss(animated: true, completion: {
             })
         }
