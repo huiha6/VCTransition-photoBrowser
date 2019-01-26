@@ -178,7 +178,7 @@ extension PhotoBroserViewController: PanPhotoDelegate {
             if isCancelTransition {
                 let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
                 transitionContainerView?.window?.windowLevel = UIWindow.Level.statusBar + 1
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: {
                     self.animatorCoordinator?.maskView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
                     self.moveView.frame.size = cell.browserView.orgImgViewSize
                     self.moveView.center = cell.browserView.orgImgViewCenter
@@ -196,7 +196,7 @@ extension PhotoBroserViewController: PanPhotoDelegate {
         }else{
             let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
             transitionContainerView?.window?.windowLevel = UIWindow.Level.statusBar + 1
-            UIView.animate(withDuration: 0.25, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: {
                 self.animatorCoordinator?.maskView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
                 self.moveView.frame.size = cell.browserView.orgImgViewSize
                 self.moveView.center = cell.browserView.orgImgViewCenter

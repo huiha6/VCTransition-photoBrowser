@@ -14,9 +14,9 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
     }
     var panScaleDirection: PanScaleDirection = .unKnown
     weak var panDelegate: PanPhotoDelegate?
-    var panEndPoint = CGPoint.zero
     var panDelegateEnable = false
     var panShouldBeganPoint = CGPoint.zero
+    var panShouldBeganContentOffset = CGPoint.zero
     
     var tapDismissClosure: (()->Void)?
     
@@ -87,6 +87,7 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
     }
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         panShouldBeganPoint = gestureRecognizer.location(in: self)
+        panShouldBeganContentOffset = contentOffset
         return true
     }
     //MARK: - method action
@@ -96,8 +97,8 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
         switch gesture.state {
         case .began:
             panDelegateEnable = false
-            //v<=1.0 拖动方向与纵轴角度小于等于45度
-            var v: CGFloat = 1.1//设置初始值大于45度
+            //v<=1.0 拖动方向与纵轴角度小于等于30度
+            var v: CGFloat = 1.0//设置初始值大于30度
             if locationPoint.x > panShouldBeganPoint.x {//左滑
                 print("左滑")
                 if locationPoint.y < panShouldBeganPoint.y {
@@ -105,7 +106,7 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
                     let offsetX = locationPoint.x - panShouldBeganPoint.x
                     let offsetY = panShouldBeganPoint.y - locationPoint.y
                     v = tan(offsetX/offsetY)
-                    if v <= 1.0 {
+                    if v <= 0.6 {
                         panScaleDirection = .down
                     }
                 }else if locationPoint.y > panShouldBeganPoint.y {
@@ -113,7 +114,7 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
                     let offsetX = locationPoint.x - panShouldBeganPoint.x
                     let offsetY = locationPoint.y - panShouldBeganPoint.y
                     v = tan(offsetX/offsetY)
-                    if v <= 1.0 {
+                    if v <= 0.6 {
                         panScaleDirection = .up
                     }
                 }else{
@@ -126,7 +127,7 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
                     let offsetX = panShouldBeganPoint.x - locationPoint.x
                     let offsetY = panShouldBeganPoint.y - locationPoint.y
                     v = tan(offsetX/offsetY)
-                    if v <= 1.0 {
+                    if v <= 0.6 {
                         panScaleDirection = .down
                     }
                 }else if locationPoint.y > panShouldBeganPoint.y {
@@ -134,7 +135,7 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
                     let offsetX = panShouldBeganPoint.x - locationPoint.x
                     let offsetY = locationPoint.y - panShouldBeganPoint.y
                     v = tan(offsetX/offsetY)
-                    if v <= 1.0 {
+                    if v <= 0.6 {
                         panScaleDirection = .up
                     }
                 }else{
@@ -152,9 +153,9 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
 //                }
                 panScaleDirection = .upDown
             }
-            //contentOffset.y <= 0.0 拖动时scrollView在顶部无偏移
-            //(bounds.height + contentOffset.y >= contentSize.height) 拖动时scrollView在底部无偏移
-            if ((contentOffset.y <= 0.0) && panScaleDirection == .down) || ((bounds.height + contentOffset.y >= contentSize.height) && panScaleDirection == .up) || (((contentOffset.y <= 0.0) || (bounds.height + contentOffset.y >= contentSize.height)) && panScaleDirection == .upDown) {
+            //panShouldBeganContentOffset == 0.0 拖动时scrollView在顶部无偏移
+            //(bounds.height + panShouldBeganContentOffset == contentSize.height) 拖动时scrollView在底部无偏移
+            if (((panShouldBeganContentOffset.y == 0.0) && panScaleDirection == .down) || ((bounds.height + panShouldBeganContentOffset.y == contentSize.height) && panScaleDirection == .up) || (((panShouldBeganContentOffset.y == 0.0) || (bounds.height + panShouldBeganContentOffset.y == contentSize.height)) && panScaleDirection == .upDown)) {
                 panDelegateEnable = true
             }
             if panDelegateEnable {
@@ -169,15 +170,14 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
             break
         case .cancelled, .ended:
             if panDelegateEnable {
-                panDelegateEnable = false
                 panDelegate?.panCancelledOfEnded()
             }
-            panEndPoint = locationPoint
             break
         default:
             break
         }
     }
+    
     @objc func tapAction(gesture: UITapGestureRecognizer) {
         if let tempClosure = self.tapDismissClosure {
             tempClosure()
@@ -231,6 +231,13 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
         orgImgViewSize = imgView.frame.size
         orgImgViewCenter = CGPoint(x: x, y: y)
     }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if panDelegateEnable {
+            let targetPoint = targetContentOffset.pointee
+            scrollView.setContentOffset(targetPoint, animated: false)
+        }
+    }
+    
     deinit {
         print("=========== deinit: \(self.classForCoder)")
     }
