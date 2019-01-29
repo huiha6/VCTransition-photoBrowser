@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol PanPhotoDelegate: NSObjectProtocol {
+protocol GHPanPhotoDelegate: NSObjectProtocol {
     func panBegan(_ locationPoint: CGPoint)
     func panChanged(_ locationPoint: CGPoint)
     func panCancelledOfEnded()

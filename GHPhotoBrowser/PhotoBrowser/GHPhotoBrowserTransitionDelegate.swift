@@ -8,39 +8,35 @@
 
 import UIKit
 
-class PhotoBrowserTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
-    
+class GHPhotoBrowserTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     var interactive: Bool = false
     var interactionController = UIPercentDrivenInteractiveTransition()
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PhotoBrowserPresentAnimator()
+        return GHPhotoBrowserPresentAnimator()
     }
     
-    
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PhotoBrowserDismissAnimator()
+        return GHPhotoBrowserDismissAnimator()
     }
     
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactive ? interactionController : nil
     }
     
-    
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactive ? interactionController : nil
     }
     
-    
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        let vc = presented as! PhotoBroserViewController
-        let animatorCoordinator = PhotoBrowserMaskController(presentedViewController: presented, presenting: presenting)
+        let vc = presented as! GHPhotoBroserViewController
+        let animatorCoordinator = GHPhotoBrowserMaskController(presentedViewController: presented, presenting: presenting)
         vc.animatorCoordinator = animatorCoordinator
         return animatorCoordinator
     }
 }
 
-class PhotoBrowserMaskController: UIPresentationController {
+class GHPhotoBrowserMaskController: UIPresentationController {
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }

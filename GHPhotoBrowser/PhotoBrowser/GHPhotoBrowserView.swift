@@ -8,15 +8,15 @@
 
 import UIKit
 
-class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
+class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
     enum PanScaleDirection {
         case unKnown, up, down, upDown
     }
-    var panScaleDirection: PanScaleDirection = .unKnown
-    weak var panDelegate: PanPhotoDelegate?
-    var panDelegateEnable = false
-    var panShouldBeganPoint = CGPoint.zero
-    var panShouldBeganContentOffset = CGPoint.zero
+    private var panScaleDirection: PanScaleDirection = .unKnown
+    weak var panDelegate: GHPanPhotoDelegate?
+    private var panDelegateEnable = false
+    private var panShouldBeganPoint = CGPoint.zero
+    private var panShouldBeganContentOffset = CGPoint.zero
     
     var tapDismissClosure: (()->Void)?
     
@@ -44,23 +44,24 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
         didSet {
             imgView.image = image
             let size = image?.size
-            let theFrame = PhotoBrowserView.getImgViewFrame(size!)
+            let theFrame = GHPhotoBrowserView.getImgViewFrame(size!)
             imgView.frame = theFrame
             orgImgViewSize = imgView.frame.size
             orgImgViewCenter = imgView.center
         }
     }
+    //browserImageView
     lazy var imgView: UIImageView = {
         let imgV = UIImageView(frame: CGRect.zero)
-        imgV.isUserInteractionEnabled = true
+//        imgV.isUserInteractionEnabled = true
         return imgV
     }()
-    lazy var doubleTap: UITapGestureRecognizer = {
+    private lazy var doubleTap: UITapGestureRecognizer = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapAction))
         tap.numberOfTapsRequired = 2
         return tap
     }()
-    lazy var tap: UITapGestureRecognizer = {
+    private lazy var tap: UITapGestureRecognizer = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         return tap
     }()
@@ -178,12 +179,12 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
         }
     }
     
-    @objc func tapAction(gesture: UITapGestureRecognizer) {
+    @objc private func tapAction(gesture: UITapGestureRecognizer) {
         if let tempClosure = self.tapDismissClosure {
             tempClosure()
         }
     }
-    @objc func doubleTapAction(gesture: UITapGestureRecognizer) {
+    @objc private func doubleTapAction(gesture: UITapGestureRecognizer) {
         let point = gesture.location(in: self)
         var scale = zoomScale
         if scale != 1.0 {
@@ -200,7 +201,7 @@ class PhotoBrowserView: UIScrollView, UIScrollViewDelegate {
     ///   - scale: 放大倍数
     ///   - center: 双击点
     /// - Returns: 放大
-    func zoomRectForScale(_ scale: CGFloat, _ center: CGPoint) -> CGRect {
+    private func zoomRectForScale(_ scale: CGFloat, _ center: CGPoint) -> CGRect {
         var zoomRect = CGRect.zero
         zoomRect.size.height = frame.size.height / scale
         zoomRect.size.width = frame.size.width / scale

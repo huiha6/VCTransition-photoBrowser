@@ -8,19 +8,25 @@
 
 import UIKit
 
-class PhotoBroserViewController: UIViewController {
-    let photoBrowserTransitionDelegate = PhotoBrowserTransitionDelegate()
+class GHPhotoBroserViewController: UIViewController {
+    let photoBrowserTransitionDelegate = GHPhotoBrowserTransitionDelegate()
     
-    let lineSpace: CGFloat = 20
+    private let lineSpace: CGFloat = 20
     var imgViewFrameAry = [CGRect]()
     var currentPage: Int = 0
     var imgAry = [UIImage]()
     
-    var presentingVC: UIViewController?
-    public func show() {
+    public func show(_ presentingVC: UIViewController, _ currentIndex: Int = 0, _ imageArray: [UIImage], _ imgFrameArray: [CGRect]) {
+        imgAry = Array(imageArray)
+        imgViewFrameAry.removeAll()
+        imgFrameArray.forEach { (frame) in
+             let theFrame = presentingVC.view.convert(frame, to: UIApplication.shared.keyWindow)
+            self.imgViewFrameAry.append(theFrame)
+        }
+        currentPage = currentIndex
         transitioningDelegate = photoBrowserTransitionDelegate
         modalPresentationStyle = .custom
-        presentingVC?.present(self, animated: true, completion: {
+        presentingVC.present(self, animated: true, completion: {
         })
     }
 
@@ -29,7 +35,7 @@ class PhotoBroserViewController: UIViewController {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
         setupUI()
     }
-    func setupUI() {
+    private func setupUI() {
         view.addSubview(browserCollectionView)
         view.addSubview(pageControl)
         view.addSubview(moveView)
@@ -42,15 +48,15 @@ class PhotoBroserViewController: UIViewController {
     }
     
     //MARK: - lazy load
-    lazy var browserCollectionView: BrowserCollectionView = {
+    lazy var browserCollectionView: GHBrowserCollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = lineSpace//单元格cell间距
         flowLayout.itemSize = CGSize(width: kScreenWidth, height: kScreenHeight)
 //        let flowLayout = GHPhotoBrowserLayout()
-        let collectionView = BrowserCollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight), collectionViewLayout: flowLayout)
-        collectionView.register(BrowserCollectionViewCell.self, forCellWithReuseIdentifier: "BrowserCollectionViewCell")
+        let collectionView = GHBrowserCollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight), collectionViewLayout: flowLayout)
+        collectionView.register(GHBrowserCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -76,16 +82,16 @@ class PhotoBroserViewController: UIViewController {
     enum PanDirectionType {
         case unKnown, up, down
     }
-    var maxOffsetH = kScreenHeight/2
-    let minImgViewWidth: CGFloat = 80
-    var beganPanPoint = CGPoint.zero
-    var orgPoint = CGPoint.zero
+    private let maxOffsetH = kScreenHeight/2
+    private let minImgViewWidth: CGFloat = 80
+    private var beganPanPoint = CGPoint.zero
+    private var orgPoint = CGPoint.zero
     //刚开始拖动方向
     var panDirection: PanDirectionType = .unKnown
-    var offsetH: CGFloat = 0.0
+    private var offsetH: CGFloat = 0.0
     //拖动时取消
-    var isCancelTransition = false
-    weak var animatorCoordinator: PhotoBrowserMaskController?
+    private var isCancelTransition = false
+    weak var animatorCoordinator: GHPhotoBrowserMaskController?
     var transitionContainerView: UIView?
     
     deinit {
@@ -93,9 +99,9 @@ class PhotoBroserViewController: UIViewController {
     }
 }
 
-extension PhotoBroserViewController: PanPhotoDelegate {
+extension GHPhotoBroserViewController: GHPanPhotoDelegate {
     func panBegan(_ locationPoint: CGPoint) {
-        let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
+        let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! GHBrowserCollectionViewCell
         let browserView = cell.browserView
         
         orgPoint = locationPoint
@@ -113,7 +119,7 @@ extension PhotoBroserViewController: PanPhotoDelegate {
     }
     
     func panChanged(_ locationPoint: CGPoint) {
-        let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
+        let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! GHBrowserCollectionViewCell
         let browserView = cell.browserView
         
         let offsetY = locationPoint.y - orgPoint.y
@@ -176,7 +182,7 @@ extension PhotoBroserViewController: PanPhotoDelegate {
         let percent = min(offsetH, maxOffsetH) / maxOffsetH
         if percent > 0.2 {
             if isCancelTransition {
-                let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
+                let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! GHBrowserCollectionViewCell
                 transitionContainerView?.window?.windowLevel = UIWindow.Level.statusBar + 1
                 UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: {
                     self.animatorCoordinator?.maskView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
@@ -194,7 +200,7 @@ extension PhotoBroserViewController: PanPhotoDelegate {
                 }
             }
         }else{
-            let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! BrowserCollectionViewCell
+            let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! GHBrowserCollectionViewCell
             transitionContainerView?.window?.windowLevel = UIWindow.Level.statusBar + 1
             UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: {
                 self.animatorCoordinator?.maskView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
@@ -209,7 +215,7 @@ extension PhotoBroserViewController: PanPhotoDelegate {
         panDirection = .unKnown
     }
     
-    @objc func panAction(gesture: UIPanGestureRecognizer) {
+    @objc private func panAction(gesture: UIPanGestureRecognizer) {
         let locationPoint = gesture.location(in: view)
         switch gesture.state {
         case .began:
@@ -227,13 +233,13 @@ extension PhotoBroserViewController: PanPhotoDelegate {
     }
 }
 
-extension PhotoBroserViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension GHPhotoBroserViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imgAry.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BrowserCollectionViewCell", for: indexPath) as! BrowserCollectionViewCell
+        let cell = collectionView.dequeueTheReusableCell(GHBrowserCollectionViewCell.self, indexPath) as! GHBrowserCollectionViewCell
         cell.browserView.panDelegate = self
         cell.tapDismissClosure = {[weak self] in
             self?.transitionContainerView?.window?.windowLevel = UIWindow.Level(rawValue: 0)
@@ -250,7 +256,7 @@ extension PhotoBroserViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 //        print(indexPath.item)
-        let theCell = cell as! BrowserCollectionViewCell
+        let theCell = cell as! GHBrowserCollectionViewCell
         theCell.browserView.setZoomScale(1.0, animated: false)
     }
     

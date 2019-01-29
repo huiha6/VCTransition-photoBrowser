@@ -103,24 +103,10 @@ class FirstViewController: UIViewController {
         /* note  初试后的多图尝试
          多张图片的尝试   包括宽大于高的图片、高大于宽的图片，没有长图(即 在没放大的模式下可上下滑动的长图)
          *///
-        let vc = PhotoBroserViewController()
-        let frame = view.convert(imgView.frame, to: UIApplication.shared.keyWindow)
-        let frame1 = view.convert(imgView1.frame, to: UIApplication.shared.keyWindow)
-        let frame2 = view.convert(imgView2.frame, to: UIApplication.shared.keyWindow)
-        let frame3 = view.convert(imgView3.frame, to: UIApplication.shared.keyWindow)
-        vc.currentPage = Int(arc4random_uniform(4))//生成一个从0到3的随机数
-        vc.imgAry = [UIImage(named: "test"), UIImage(named: "test1"), UIImage(named: "test2"), UIImage(named: "test3")] as! [UIImage]
-        vc.imgViewFrameAry = [frame, frame1, frame2, frame3]
-        vc.presentingVC = self
-        vc.show()
-//        present(vc, animated: true) {
-//            //转场到图片浏览控制器界面，设置状态栏隐藏
-//            //note: 接口封装还没做好，所有操作是对模态的图片控制器最好，
-//            //但不知道为什么对模态控制器进行这样的状态栏隐藏显示设置不行，
-//            //暂时隐藏显示操作的是presentingVC(即FirstViewController)的状态栏，不利于封装
-//            self.hiddenStatusBar = true
-//            self.setNeedsStatusBarAppearanceUpdate()
-//        }
+        let vc = GHPhotoBroserViewController()
+        let imgAry = [UIImage(named: "test"), UIImage(named: "test1"), UIImage(named: "test2"), UIImage(named: "test3")] as! [UIImage]
+        let imgViewFrameAry = [imgView.frame, imgView1.frame, imgView2.frame, imgView3.frame]
+        vc.show(self, Int(arc4random_uniform(4)), imgAry, imgViewFrameAry)
     }
 
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoBrowserDismissAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class GHPhotoBrowserDismissAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.2
     }
@@ -18,7 +18,7 @@ class PhotoBrowserDismissAnimator: NSObject, UIViewControllerAnimatedTransitioni
         //        let navC = tabbarC.selectedViewController as! UINavigationController
         //        let toVC = navC.viewControllers.first as! FirstViewController
         
-        let fromVC = transitionContext.viewController(forKey: .from) as! PhotoBroserViewController
+        let fromVC = transitionContext.viewController(forKey: .from) as! GHPhotoBroserViewController
         let moveView = fromVC.moveView//browserView.imgView
         moveView.image = fromVC.imgAry[fromVC.currentPage]
         moveView.isHidden = false
@@ -32,5 +32,4 @@ class PhotoBrowserDismissAnimator: NSObject, UIViewControllerAnimatedTransitioni
             transitionContext.completeTransition(true)
         }
     }
-
 }

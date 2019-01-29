@@ -35,34 +35,7 @@ extension UITabBar {
         }
     }
 }
-
-/* note
- - (UIViewController *)currentViewController
- {
- UIWindow *keyWindow  = [UIApplication sharedApplication].keyWindow;
- UIViewController *vc = keyWindow.rootViewController;
- while (vc.presentedViewController)
- {
- vc = vc.presentedViewController;
- 
- if ([vc isKindOfClass:[UINavigationController class]])
- {
- vc = [(UINavigationController *)vc visibleViewController];
- }
- else if ([vc isKindOfClass:[UITabBarController class]])
- {
- vc = [(UITabBarController *)vc selectedViewController];
- }
- }
- return vc;
- }
- 
- - (UINavigationController *)currentNavigationController
- {
- return [self currentViewController].navigationController;
- }
- */
-
+//MARK: -
 /// 获取当前正要显示的视图控制器
 ///
 /// - Returns: currentViewController
@@ -83,4 +56,50 @@ func currentViewController() -> UIViewController {
 }
 func currentNavigationController() -> UINavigationController {
     return currentViewController().navigationController!
+}
+
+//MARK: - tableView/collectionView register/dequeue protocol
+protocol ReusableView {
+}
+//Self不仅指代的是实现该协议的类型本身，也包括该类的子类
+extension ReusableView where Self: UIView {
+    static var reuseId: String {
+        return String(describing: type(of: self))
+    }
+}
+protocol NibLoadableView {
+}
+extension NibLoadableView where Self: UIView {
+    static var NibName: String {
+        return String(describing: type(of: self))
+    }
+}
+extension UICollectionViewCell: ReusableView, NibLoadableView {
+}
+extension UICollectionView {
+    func register(_ cellType: UICollectionViewCell.Type) {
+        register(cellType.classForCoder(), forCellWithReuseIdentifier: cellType.reuseId)
+    }
+    func registerWithNib(_ cellType: UICollectionViewCell.Type) {
+        register(UINib(nibName: cellType.NibName, bundle: nil), forCellWithReuseIdentifier: cellType.reuseId)
+    }
+    func dequeueTheReusableCell(_ cellType: UICollectionViewCell.Type, _ indexPath: IndexPath) -> UICollectionViewCell {
+        return dequeueReusableCell(withReuseIdentifier: cellType.reuseId, for: indexPath)
+    }
+}
+extension UITableViewCell: ReusableView, NibLoadableView {
+}
+extension UITableView {
+    func register(_ cellType: UITableViewCell.Type) {
+        register(cellType.classForCoder(), forCellReuseIdentifier: cellType.reuseId)
+    }
+    func registerWithNib(_ cellType: UITableViewCell.Type) {
+        register(UINib(nibName: cellType.NibName, bundle: nil), forCellReuseIdentifier: cellType.reuseId)
+    }
+    func dequeueTheReusableCell(_ cellType: UITableViewCell.Type, _ indexPath: IndexPath) -> UITableViewCell {
+        return dequeueReusableCell(withIdentifier: cellType.reuseId, for: indexPath)
+    }
+//    func ss(_ cellClass: AnyClass) {
+//        register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: cellClass.re)
+//    }
 }

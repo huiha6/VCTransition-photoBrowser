@@ -8,11 +8,11 @@
 
 import UIKit
 
-class BrowserCollectionViewCell: UICollectionViewCell {
+class GHBrowserCollectionViewCell: UICollectionViewCell {
     var tapDismissClosure: (()->Void)?
 
-    lazy var browserView: PhotoBrowserView = {
-        let bv = PhotoBrowserView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
+    lazy var browserView: GHPhotoBrowserView = {
+        let bv = GHPhotoBrowserView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
         bv.tapDismissClosure = {[weak self] in
             if let tempClosure = self?.tapDismissClosure {
                 tempClosure()
@@ -20,13 +20,11 @@ class BrowserCollectionViewCell: UICollectionViewCell {
         }
         return bv
     }()
-    
     var image: UIImage? {
         didSet {
             browserView.image = image
         }
     }
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
