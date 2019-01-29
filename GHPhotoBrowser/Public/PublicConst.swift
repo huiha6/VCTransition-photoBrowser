@@ -99,7 +99,4 @@ extension UITableView {
     func dequeueTheReusableCell(_ cellType: UITableViewCell.Type, _ indexPath: IndexPath) -> UITableViewCell {
         return dequeueReusableCell(withIdentifier: cellType.reuseId, for: indexPath)
     }
-//    func ss(_ cellClass: AnyClass) {
-//        register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: cellClass.re)
-//    }
 }

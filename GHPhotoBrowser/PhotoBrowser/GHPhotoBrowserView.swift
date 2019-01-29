@@ -68,7 +68,11 @@ class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         contentSize = CGSize(width: frame.size.width, height: frame.size.height)
         minimumZoomScale = 1.0
         maximumZoomScale = 3.0
@@ -94,9 +98,10 @@ class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
     //MARK: - method action
     @objc func panAction(gesture: UIPanGestureRecognizer) {
         let locationPoint = gesture.location(in: self)
-        print("pan-----------------pan= \(locationPoint)")
+        //        print("pan-----------------pan= \(locationPoint)")
         switch gesture.state {
         case .began:
+            panScaleDirection = .unKnown
             panDelegateEnable = false
             //v<=1.0 拖动方向与纵轴角度小于等于30度
             var v: CGFloat = 1.0//设置初始值大于30度
@@ -144,27 +149,40 @@ class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
                 }
             }else {//绝对上下滑动
                 v = 0
-//                if locationPoint.y < panShouldBeganPoint.y {
-//                    print("向下")
-//                    panScaleDirection = .down
-//                }else if locationPoint.y > panShouldBeganPoint.y {
-//                    print("向上")
-//                    panScaleDirection = .up
-//                }else{
-//                }
-                panScaleDirection = .upDown
+                if locationPoint.y < panShouldBeganPoint.y {
+                    panScaleDirection = .down
+                }else if locationPoint.y > panShouldBeganPoint.y {
+                    panScaleDirection = .up
+                }else{
+                    panScaleDirection = .upDown
+                }
             }
             //panShouldBeganContentOffset == 0.0 拖动时scrollView在顶部无偏移
             //(bounds.height + panShouldBeganContentOffset == contentSize.height) 拖动时scrollView在底部无偏移
-            if (((panShouldBeganContentOffset.y == 0.0) && panScaleDirection == .down) || ((bounds.height + panShouldBeganContentOffset.y == contentSize.height) && panScaleDirection == .up) || (((panShouldBeganContentOffset.y == 0.0) || (bounds.height + panShouldBeganContentOffset.y == contentSize.height)) && panScaleDirection == .upDown)) {
+            if ((panShouldBeganContentOffset.y == 0.0) && panScaleDirection == .down) {
+                panDelegateEnable = true
+            }
+            if ((bounds.height + panShouldBeganContentOffset.y == contentSize.height) && panScaleDirection == .up) {
                 panDelegateEnable = true
             }
             if panDelegateEnable {
                 panDelegate?.panBegan(convert(locationPoint, to: UIApplication.shared.keyWindow))
             }
-            panScaleDirection = .unKnown
             break
         case .changed:
+            if panScaleDirection == .upDown {
+                if locationPoint.y < panShouldBeganPoint.y {
+                    panScaleDirection = .up
+                }else if locationPoint.y > panShouldBeganPoint.y {
+                    panScaleDirection = .down
+                }
+                if ((panShouldBeganContentOffset.y == 0.0) && panScaleDirection == .down) {
+                    panDelegateEnable = true
+                }
+                if ((bounds.height + panShouldBeganContentOffset.y == contentSize.height) && panScaleDirection == .up) {
+                    panDelegateEnable = true
+                }
+            }
             if panDelegateEnable {
                 panDelegate?.panChanged(convert(locationPoint, to: UIApplication.shared.keyWindow))
             }

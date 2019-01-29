@@ -65,6 +65,7 @@ class GHPhotoBroserViewController: UIViewController {
         let pageC = UIPageControl(frame: CGRect(x: (view.frame.width - 200)/2, y: view.frame.height - 80, width: 200, height: 30))
         pageC.currentPage = currentPage
         pageC.isEnabled = false
+        pageC.alpha = imgAry.count > 1 ? 1.0 : 0.0
         pageC.numberOfPages = imgAry.count
         return pageC
     }()
