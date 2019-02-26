@@ -64,14 +64,14 @@ protocol ReusableView {
 //Self不仅指代的是实现该协议的类型本身，也包括该类的子类
 extension ReusableView where Self: UIView {
     static var reuseId: String {
-        return String(describing: type(of: self))
+        return "\(self.classForCoder)"//String(describing: type(of: self))
     }
 }
 protocol NibLoadableView {
 }
 extension NibLoadableView where Self: UIView {
     static var NibName: String {
-        return String(describing: type(of: self))
+        return "\(self.classForCoder)"//String(describing: type(of: self))
     }
 }
 extension UICollectionViewCell: ReusableView, NibLoadableView {
