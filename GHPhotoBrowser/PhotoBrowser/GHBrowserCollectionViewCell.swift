@@ -12,7 +12,7 @@ class GHBrowserCollectionViewCell: UICollectionViewCell {
     var tapDismissClosure: (()->Void)?
 
     lazy var browserView: GHPhotoBrowserView = {
-        let bv = GHPhotoBrowserView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
+        let bv = GHPhotoBrowserView(frame: CGRect(x: (bounds.width - kScreenWidth)*0.5, y: 0, width: kScreenWidth, height: bounds.height))
         bv.tapDismissClosure = {[weak self] in
             if let tempClosure = self?.tapDismissClosure {
                 tempClosure()

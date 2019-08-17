@@ -9,20 +9,20 @@
 import UIKit
 
 class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
-    enum PanScaleDirection {
-        case unKnown, up, down, upDown
-    }
-    private var panScaleDirection: PanScaleDirection = .unKnown
+    
     weak var panDelegate: GHPanPhotoDelegate?
     private var panDelegateEnable = false
+    //开始拖拽时是否在顶部
+    private var beginDraggingIsTop = false
+    //开始拖拽时是否在底部
+    private var beginDraggingIsBottom = false
     private var panShouldBeganPoint = CGPoint.zero
-    private var panShouldBeganContentOffset = CGPoint.zero
     
     var tapDismissClosure: (()->Void)?
     
     var orgImgViewSize = CGSize.zero
     var orgImgViewCenter = CGPoint.zero
-
+    
     /// 根据图片的尺寸计算得imgView的frame, 长图模式暂未有
     ///
     /// - Parameter imageSize: image的size
@@ -34,26 +34,37 @@ class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
             let h = (size.height/size.width)*kScreenWidth
             theFrame = CGRect(x: 0, y: (kScreenHeight-h)/2, width: kScreenWidth, height: h)
         }else{
-            let w = (size.width/size.height)*kScreenHeight
-            theFrame = CGRect(x: (kScreenWidth - w)/2, y: 0, width: w, height: kScreenHeight)
+            let w = kScreenWidth
+            let h = size.height/size.width*w
+            var y: CGFloat = 0
+            if h < kScreenHeight {
+                y = (kScreenHeight-h)/2
+            }
+            theFrame = CGRect(origin: CGPoint(x: 0, y: y), size: CGSize(width: w, height: h))
         }
         return theFrame
     }
     
     var image: UIImage? {
         didSet {
-            imgView.image = image
-            let size = image?.size
-            let theFrame = GHPhotoBrowserView.getImgViewFrame(size!)
-            imgView.frame = theFrame
-            orgImgViewSize = imgView.frame.size
-            orgImgViewCenter = imgView.center
+            if image != nil {
+                imgView.image = image
+                let size = image!.size
+                let theFrame = GHPhotoBrowserView.getImgViewFrame(size)
+                imgView.frame = theFrame
+                orgImgViewSize = imgView.frame.size
+                orgImgViewCenter = imgView.center
+                if size.width >= size.height  {
+                    contentSize = CGSize(width: frame.size.width, height: frame.size.height)
+                }else{
+                    contentSize = CGSize(width: theFrame.size.width, height: theFrame.size.height)
+                }
+            }
         }
     }
     //browserImageView
     lazy var imgView: UIImageView = {
         let imgV = UIImageView(frame: CGRect.zero)
-//        imgV.isUserInteractionEnabled = true
         return imgV
     }()
     private lazy var doubleTap: UITapGestureRecognizer = {
@@ -90,108 +101,35 @@ class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        panShouldBeganPoint = gestureRecognizer.location(in: self)
-        panShouldBeganContentOffset = contentOffset
-        return true
-    }
+    
     //MARK: - method action
     @objc func panAction(gesture: UIPanGestureRecognizer) {
         let locationPoint = gesture.location(in: self)
         //        print("pan-----------------pan= \(locationPoint)")
         switch gesture.state {
         case .began:
-            panScaleDirection = .unKnown
-            panDelegateEnable = false
-            //v<=1.0 拖动方向与纵轴角度小于等于30度
-            var v: CGFloat = 1.0//设置初始值大于30度
-            if locationPoint.x > panShouldBeganPoint.x {//左滑
-                print("左滑")
-                if locationPoint.y < panShouldBeganPoint.y {
-                    print("向下")
-                    let offsetX = locationPoint.x - panShouldBeganPoint.x
-                    let offsetY = panShouldBeganPoint.y - locationPoint.y
-                    v = tan(offsetX/offsetY)
-                    if v <= 0.6 {
-                        panScaleDirection = .down
-                    }
-                }else if locationPoint.y > panShouldBeganPoint.y {
-                    print("向上")
-                    let offsetX = locationPoint.x - panShouldBeganPoint.x
-                    let offsetY = locationPoint.y - panShouldBeganPoint.y
-                    v = tan(offsetX/offsetY)
-                    if v <= 0.6 {
-                        panScaleDirection = .up
-                    }
-                }else{
-                    
-                }
-            }else if locationPoint.x < panShouldBeganPoint.x {//右滑
-                print("右滑")
-                if locationPoint.y < panShouldBeganPoint.y {
-                    print("向下")
-                    let offsetX = panShouldBeganPoint.x - locationPoint.x
-                    let offsetY = panShouldBeganPoint.y - locationPoint.y
-                    v = tan(offsetX/offsetY)
-                    if v <= 0.6 {
-                        panScaleDirection = .down
-                    }
-                }else if locationPoint.y > panShouldBeganPoint.y {
-                    print("向上")
-                    let offsetX = panShouldBeganPoint.x - locationPoint.x
-                    let offsetY = locationPoint.y - panShouldBeganPoint.y
-                    v = tan(offsetX/offsetY)
-                    if v <= 0.6 {
-                        panScaleDirection = .up
-                    }
-                }else{
-                    
-                }
-            }else {//绝对上下滑动
-                v = 0
-                if locationPoint.y < panShouldBeganPoint.y {
-                    panScaleDirection = .down
-                }else if locationPoint.y > panShouldBeganPoint.y {
-                    panScaleDirection = .up
-                }else{
-                    panScaleDirection = .upDown
-                }
-            }
-            //panShouldBeganContentOffset == 0.0 拖动时scrollView在顶部无偏移
-            //(bounds.height + panShouldBeganContentOffset == contentSize.height) 拖动时scrollView在底部无偏移
-            if ((panShouldBeganContentOffset.y == 0.0) && panScaleDirection == .down) {
-                panDelegateEnable = true
-            }
-            if ((bounds.height + panShouldBeganContentOffset.y == contentSize.height) && panScaleDirection == .up) {
-                panDelegateEnable = true
-            }
-            if panDelegateEnable {
-                panDelegate?.panBegan(convert(locationPoint, to: UIApplication.shared.keyWindow))
-            }
-            break
+            panShouldBeganPoint = locationPoint
         case .changed:
-            if panScaleDirection == .upDown {
-                if locationPoint.y < panShouldBeganPoint.y {
-                    panScaleDirection = .up
-                }else if locationPoint.y > panShouldBeganPoint.y {
-                    panScaleDirection = .down
-                }
-                if ((panShouldBeganContentOffset.y == 0.0) && panScaleDirection == .down) {
+            if beginDraggingIsTop && contentOffset.y < 0 && panShouldBeganPoint.y < locationPoint.y {
+                if panDelegateEnable == false {
                     panDelegateEnable = true
+                    panDelegate?.panBegan(convert(locationPoint, to: UIApplication.shared.keyWindow))
+                }else{
+                    panDelegate?.panChanged(convert(locationPoint, to: UIApplication.shared.keyWindow))
                 }
-                if ((bounds.height + panShouldBeganContentOffset.y == contentSize.height) && panScaleDirection == .up) {
+            }else if beginDraggingIsBottom && contentOffset.y + bounds.height > contentSize.height && panShouldBeganPoint.y > locationPoint.y {
+                if panDelegateEnable == false {
                     panDelegateEnable = true
+                    panDelegate?.panBegan(convert(locationPoint, to: UIApplication.shared.keyWindow))
+                }else{
+                    panDelegate?.panChanged(convert(locationPoint, to: UIApplication.shared.keyWindow))
                 }
             }
-            if panDelegateEnable {
-                panDelegate?.panChanged(convert(locationPoint, to: UIApplication.shared.keyWindow))
-            }
-            break
         case .cancelled, .ended:
             if panDelegateEnable {
+                panDelegateEnable = false
                 panDelegate?.panCancelledOfEnded()
             }
-            break
         default:
             break
         }
@@ -243,6 +181,13 @@ class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
         orgImgViewSize = imgView.frame.size
         orgImgViewCenter = CGPoint(x: x, y: y)
     }
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        print("didEndZooming = \(scrollView.contentOffset)")
+        let x = imgView.center.x - scrollView.contentOffset.x
+        let y = imgView.center.y - scrollView.contentOffset.y
+        orgImgViewSize = imgView.frame.size
+        orgImgViewCenter = CGPoint(x: x, y: y)
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset)
         let x = imgView.center.x - scrollView.contentOffset.x
@@ -250,10 +195,18 @@ class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
         orgImgViewSize = imgView.frame.size
         orgImgViewCenter = CGPoint(x: x, y: y)
     }
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if panDelegateEnable {
-            let targetPoint = targetContentOffset.pointee
-            scrollView.setContentOffset(targetPoint, animated: false)
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("-----begin dragging = \(scrollView.contentOffset)")
+        if scrollView.contentOffset.y == 0 {
+            beginDraggingIsTop = true
+        }else{
+            beginDraggingIsTop = false
+        }
+        if Int(scrollView.contentOffset.y + bounds.height) == Int(contentSize.height) {
+            beginDraggingIsBottom = true
+        }else{
+            beginDraggingIsBottom = false
         }
     }
     

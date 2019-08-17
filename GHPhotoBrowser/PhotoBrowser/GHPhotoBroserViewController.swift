@@ -52,13 +52,16 @@ class GHPhotoBroserViewController: UIViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = lineSpace//单元格cell间距
-        flowLayout.itemSize = CGSize(width: kScreenWidth, height: kScreenHeight)
-//        let flowLayout = GHPhotoBrowserLayout()
-        let collectionView = GHBrowserCollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight), collectionViewLayout: flowLayout)
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.itemSize = CGSize(width: kScreenWidth + lineSpace, height: kScreenHeight)
+        //        let flowLayout = GHPhotoBrowserLayout()
+        let collectionView = GHBrowserCollectionView(frame: CGRect(x: 0 - lineSpace*0.5, y: 0, width: kScreenWidth + lineSpace, height: kScreenHeight), collectionViewLayout: flowLayout)
         collectionView.register(GHBrowserCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.isPagingEnabled = true
+        collectionView.contentSize = CGSize(width: kScreenWidth + lineSpace, height: kScreenHeight)
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     lazy var pageControl: UIPageControl = {
@@ -181,17 +184,14 @@ extension GHPhotoBroserViewController: GHPanPhotoDelegate {
     
     func panCancelledOfEnded() {
         let percent = min(offsetH, maxOffsetH) / maxOffsetH
-        if percent > 0.2 {
+        if percent > 0.1 {
             if isCancelTransition {
-                let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! GHBrowserCollectionViewCell
                 transitionContainerView?.window?.windowLevel = UIWindow.Level.statusBar + 1
-                UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: {
+                self.browserCollectionView.isHidden = false
+                self.moveView.isHidden = true
+                UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut], animations: {
                     self.animatorCoordinator?.maskView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
-                    self.moveView.frame.size = cell.browserView.orgImgViewSize
-                    self.moveView.center = cell.browserView.orgImgViewCenter
                 }) { (_) in
-                    self.browserCollectionView.isHidden = false
-                    self.moveView.isHidden = true
                     self.pageControl.isHidden = false
                 }
             }else{
@@ -201,15 +201,12 @@ extension GHPhotoBroserViewController: GHPanPhotoDelegate {
                 }
             }
         }else{
-            let cell = browserCollectionView.cellForItem(at: IndexPath(item: currentPage, section: 0)) as! GHBrowserCollectionViewCell
             transitionContainerView?.window?.windowLevel = UIWindow.Level.statusBar + 1
+            self.browserCollectionView.isHidden = false
+            self.moveView.isHidden = true
             UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: {
                 self.animatorCoordinator?.maskView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
-                self.moveView.frame.size = cell.browserView.orgImgViewSize
-                self.moveView.center = cell.browserView.orgImgViewCenter
             }) { (_) in
-                self.browserCollectionView.isHidden = false
-                self.moveView.isHidden = true
                 self.pageControl.isHidden = false
             }
         }
@@ -262,44 +259,15 @@ extension GHPhotoBroserViewController: UICollectionViewDataSource, UICollectionV
     }
     
     //MARK: - scrollViewDelegate
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let pageWidth: CGFloat = kScreenWidth + lineSpace
-        let currentOffset = scrollView.contentOffset.x
-        let targetOffset = CGFloat(targetContentOffset.pointee.x)
-        var newTargetOffset:CGFloat = 0.0
-        
-        if currentOffset < 0 {
-            currentPage = 0
-        }else if currentOffset > pageWidth*CGFloat(imgAry.count - 1) {
-            currentPage = imgAry.count - 1
-        }else{
-//            print("+++++++++ \(targetOffset) ------ \(currentOffset)")
-            if targetOffset > currentOffset {
-                if currentOffset > pageWidth*CGFloat(currentPage) {
-                    currentPage += 1
-                }
-            }else if targetOffset < currentOffset {
-                if currentOffset < pageWidth*CGFloat(currentPage) {
-                    currentPage -= 1
-                }
-            }else{
-                let currentPageOffsetX = pageWidth*CGFloat(currentPage)
-                if currentOffset > currentPageOffsetX {//向左滑
-                    let offsetX = currentOffset - currentPageOffsetX
-                    if (offsetX / kScreenWidth + 0.5) > 1.0 {
-                        currentPage += 1
-                    }
-                }else{//向右滑
-                    let offsetX = currentPageOffsetX - currentOffset
-                    if (offsetX / kScreenWidth + 0.5) > 1.0 {
-                        currentPage -= 1
-                    }
-                }
-            }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var offsetWidth = scrollView.contentOffset.x
+        offsetWidth = offsetWidth + (kScreenWidth + lineSpace)*0.5
+        let currentIndex = Int(offsetWidth / (kScreenWidth + lineSpace))
+        if currentIndex < imgAry.count && currentIndex != currentPage {
+            currentPage = currentIndex
+            print("========== index= \(currentPage)")
+            pageControl.currentPage = currentPage
         }
-        newTargetOffset = CGFloat(currentPage) * pageWidth
-        targetContentOffset.pointee = CGPoint(x: newTargetOffset, y: 0.0)
-        pageControl.currentPage = currentPage
     }
 }
 

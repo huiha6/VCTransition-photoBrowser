@@ -26,12 +26,12 @@
 		A70AE28E21F6A3D400CC0415 /* GHPhotoBrowserPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28D21F6A3D400CC0415 /* GHPhotoBrowserPresentAnimator.swift */; };
 		A70AE29021F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28F21F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift */; };
 		A70AE29221F6A43F00CC0415 /* GHPhotoBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE29121F6A43F00CC0415 /* GHPhotoBrowserView.swift */; };
+		A7A3305F2306BF04002EA28C /* GHPanPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A3305E2306BF04002EA28C /* GHPanPhotoDelegate.swift */; };
 		A7D1D53721F8039500B675B3 /* GHBrowserCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53621F8039500B675B3 /* GHBrowserCollectionView.swift */; };
 		A7D1D53D21F89B4400B675B3 /* SideBarPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53921F89B4400B675B3 /* SideBarPresentAnimator.swift */; };
 		A7D1D53E21F89B4400B675B3 /* SideBarDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53A21F89B4400B675B3 /* SideBarDismissAnimator.swift */; };
 		A7D1D53F21F89B4400B675B3 /* SideBarTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53B21F89B4400B675B3 /* SideBarTransitionDelegate.swift */; };
 		A7D1D54021F89B4400B675B3 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53C21F89B4400B675B3 /* SideBarViewController.swift */; };
-		A7D1D54221F97F3E00B675B3 /* GHPanPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D54121F97F3E00B675B3 /* GHPanPhotoDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,12 +56,12 @@
 		A70AE28D21F6A3D400CC0415 /* GHPhotoBrowserPresentAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserPresentAnimator.swift; sourceTree = "<group>"; };
 		A70AE28F21F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserDismissAnimator.swift; sourceTree = "<group>"; };
 		A70AE29121F6A43F00CC0415 /* GHPhotoBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserView.swift; sourceTree = "<group>"; };
+		A7A3305E2306BF04002EA28C /* GHPanPhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHPanPhotoDelegate.swift; sourceTree = "<group>"; };
 		A7D1D53621F8039500B675B3 /* GHBrowserCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHBrowserCollectionView.swift; sourceTree = "<group>"; };
 		A7D1D53921F89B4400B675B3 /* SideBarPresentAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarPresentAnimator.swift; sourceTree = "<group>"; };
 		A7D1D53A21F89B4400B675B3 /* SideBarDismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarDismissAnimator.swift; sourceTree = "<group>"; };
 		A7D1D53B21F89B4400B675B3 /* SideBarTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTransitionDelegate.swift; sourceTree = "<group>"; };
 		A7D1D53C21F89B4400B675B3 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
-		A7D1D54121F97F3E00B675B3 /* GHPanPhotoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHPanPhotoDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +119,7 @@
 				A70AE28B21F6A3A200CC0415 /* GHPhotoBrowserTransitionDelegate.swift */,
 				A70AE28D21F6A3D400CC0415 /* GHPhotoBrowserPresentAnimator.swift */,
 				A70AE28F21F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift */,
-				A7D1D54121F97F3E00B675B3 /* GHPanPhotoDelegate.swift */,
+				A7A3305E2306BF04002EA28C /* GHPanPhotoDelegate.swift */,
 			);
 			path = PhotoBrowser;
 			sourceTree = "<group>";
@@ -253,8 +253,8 @@
 				A70AE29221F6A43F00CC0415 /* GHPhotoBrowserView.swift in Sources */,
 				A70AE28821F6A26800CC0415 /* GHPhotoBroserViewController.swift in Sources */,
 				A70AE27D21F6A12100CC0415 /* ImgBrowserPresentAnimator.swift in Sources */,
-				A7D1D54221F97F3E00B675B3 /* GHPanPhotoDelegate.swift in Sources */,
 				A7D1D53E21F89B4400B675B3 /* SideBarDismissAnimator.swift in Sources */,
+				A7A3305F2306BF04002EA28C /* GHPanPhotoDelegate.swift in Sources */,
 				A70AE29021F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift in Sources */,
 				A70AE27021F6A11200CC0415 /* MainTabbarController.swift in Sources */,
 				A70AE27C21F6A12100CC0415 /* ImgBrowserViewController.swift in Sources */,

@@ -106,7 +106,7 @@ class FirstViewController: UIViewController {
         let vc = GHPhotoBroserViewController()
         let imgAry = [UIImage(named: "test"), UIImage(named: "test1"), UIImage(named: "test2"), UIImage(named: "test3")] as! [UIImage]
         let imgViewFrameAry = [imgView.frame, imgView1.frame, imgView2.frame, imgView3.frame]
-        vc.show(self, Int(arc4random_uniform(4)), imgAry, imgViewFrameAry)
+        vc.show(self, 2, imgAry, imgViewFrameAry)//Int(arc4random_uniform(4))
     }
 
 }
