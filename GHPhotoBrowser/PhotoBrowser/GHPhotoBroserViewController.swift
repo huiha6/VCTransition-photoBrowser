@@ -9,6 +9,13 @@
 import UIKit
 
 class GHPhotoBroserViewController: UIViewController {
+    private var screenWidth: CGFloat {
+        return UIScreen.main.bounds.size.width
+    }
+    private var screenHeight: CGFloat {
+        return UIScreen.main.bounds.size.height
+    }
+
     let photoBrowserTransitionDelegate = GHPhotoBrowserTransitionDelegate()
     
     private let lineSpace: CGFloat = 20
@@ -43,7 +50,7 @@ class GHPhotoBroserViewController: UIViewController {
         pageControl.currentPage = currentPage
         moveView.frame = imgViewFrameAry[currentPage]
         moveView.image = imgAry[currentPage]
-        let targetOffset = CGFloat(currentPage) * (kScreenWidth+lineSpace)
+        let targetOffset = CGFloat(currentPage) * (screenWidth+lineSpace)
         browserCollectionView.setContentOffset(CGPoint(x: targetOffset, y: 0), animated: false)
     }
     
@@ -53,14 +60,14 @@ class GHPhotoBroserViewController: UIViewController {
         flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
-        flowLayout.itemSize = CGSize(width: kScreenWidth + lineSpace, height: kScreenHeight)
+        flowLayout.itemSize = CGSize(width: screenWidth + lineSpace, height: screenHeight)
         //        let flowLayout = GHPhotoBrowserLayout()
-        let collectionView = GHBrowserCollectionView(frame: CGRect(x: 0 - lineSpace*0.5, y: 0, width: kScreenWidth + lineSpace, height: kScreenHeight), collectionViewLayout: flowLayout)
-        collectionView.register(GHBrowserCollectionViewCell.self)
+        let collectionView = GHBrowserCollectionView(frame: CGRect(x: 0 - lineSpace*0.5, y: 0, width: screenWidth + lineSpace, height: screenHeight), collectionViewLayout: flowLayout)
+        collectionView.register(GHBrowserCollectionViewCell.self, forCellWithReuseIdentifier: "GHBrowserCollectionViewCellID")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
-        collectionView.contentSize = CGSize(width: kScreenWidth + lineSpace, height: kScreenHeight)
+        collectionView.contentSize = CGSize(width: screenWidth + lineSpace, height: screenHeight)
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -86,7 +93,7 @@ class GHPhotoBroserViewController: UIViewController {
     enum PanDirectionType {
         case unKnown, up, down
     }
-    private let maxOffsetH = kScreenHeight/2
+    private let maxOffsetH = UIScreen.main.bounds.size.height*0.5
     private let minImgViewWidth: CGFloat = 80
     private var beganPanPoint = CGPoint.zero
     private var orgPoint = CGPoint.zero
@@ -237,7 +244,7 @@ extension GHPhotoBroserViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueTheReusableCell(GHBrowserCollectionViewCell.self, indexPath) as! GHBrowserCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GHBrowserCollectionViewCellID", for: indexPath) as! GHBrowserCollectionViewCell
         cell.browserView.panDelegate = self
         cell.tapDismissClosure = {[weak self] in
             self?.transitionContainerView?.window?.windowLevel = UIWindow.Level(rawValue: 0)
@@ -261,8 +268,8 @@ extension GHPhotoBroserViewController: UICollectionViewDataSource, UICollectionV
     //MARK: - scrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var offsetWidth = scrollView.contentOffset.x
-        offsetWidth = offsetWidth + (kScreenWidth + lineSpace)*0.5
-        let currentIndex = Int(offsetWidth / (kScreenWidth + lineSpace))
+        offsetWidth = offsetWidth + (screenWidth + lineSpace)*0.5
+        let currentIndex = Int(offsetWidth / (screenWidth + lineSpace))
         if currentIndex < imgAry.count && currentIndex != currentPage {
             currentPage = currentIndex
             print("========== index= \(currentPage)")

@@ -9,7 +9,13 @@
 import UIKit
 
 class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
-    
+    private static var screenWidth: CGFloat {
+        return UIScreen.main.bounds.size.width
+    }
+    private static var screenHeight: CGFloat {
+        return UIScreen.main.bounds.size.height
+    }
+
     weak var panDelegate: GHPanPhotoDelegate?
     private var panDelegateEnable = false
     //开始拖拽时是否在顶部
@@ -31,14 +37,14 @@ class GHPhotoBrowserView: UIScrollView, UIScrollViewDelegate {
         let size = imageSize
         var theFrame = CGRect.zero
         if size.width >= size.height {
-            let h = (size.height/size.width)*kScreenWidth
-            theFrame = CGRect(x: 0, y: (kScreenHeight-h)/2, width: kScreenWidth, height: h)
+            let h = (size.height/size.width)*screenWidth
+            theFrame = CGRect(x: 0, y: (screenHeight-h)/2, width: screenWidth, height: h)
         }else{
-            let w = kScreenWidth
+            let w = screenWidth
             let h = size.height/size.width*w
             var y: CGFloat = 0
-            if h < kScreenHeight {
-                y = (kScreenHeight-h)/2
+            if h < screenHeight {
+                y = (screenHeight-h)/2
             }
             theFrame = CGRect(origin: CGPoint(x: 0, y: y), size: CGSize(width: w, height: h))
         }
