@@ -8,7 +8,29 @@
 
 import UIKit
 
-class GHPhotoBroserViewController: UIViewController {
+public class GHPhotoBroserViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imgAry.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = browserCollectionView.dequeueReusableCell(withReuseIdentifier: "GHBrowserCollectionViewCellID", for: indexPath) as! GHBrowserCollectionViewCell
+        cell.browserView.panDelegate = self
+        cell.tapDismissClosure = {[weak self] in
+            self?.transitionContainerView?.window?.windowLevel = UIWindow.Level(rawValue: 0)
+            self?.dismiss(animated: true, completion: {
+            })
+        }
+        cell.image = imgAry[indexPath.item]
+        return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        //        print(indexPath.item)
+        let theCell = cell as! GHBrowserCollectionViewCell
+        theCell.browserView.setZoomScale(1.0, animated: false)
+    }
+    
     private var screenWidth: CGFloat {
         return UIScreen.main.bounds.size.width
     }
@@ -37,7 +59,7 @@ class GHPhotoBroserViewController: UIViewController {
         })
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
         setupUI()
@@ -107,6 +129,47 @@ class GHPhotoBroserViewController: UIViewController {
     
     deinit {
         print("=========== deinit: \(self.classForCoder)")
+    }
+    
+    /*
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imgAry.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GHBrowserCollectionViewCellID", for: indexPath) as! GHBrowserCollectionViewCell
+        collectionView.dequeueReusableCell(withReuseIdentifier: "GHBrowserCollectionViewCellID", for: indexPath) as! GHBrowserCollectionViewCell
+        cell.browserView.panDelegate = self
+        cell.tapDismissClosure = {[weak self] in
+            self?.transitionContainerView?.window?.windowLevel = UIWindow.Level(rawValue: 0)
+            self?.dismiss(animated: true, completion: {
+            })
+        }
+        cell.image = imgAry[indexPath.item]
+        return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        //        print(indexPath.item)
+        let theCell = cell as! GHBrowserCollectionViewCell
+        theCell.browserView.setZoomScale(1.0, animated: false)
+    }
+    */
+    
+    //MARK: - scrollViewDelegate
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var offsetWidth = scrollView.contentOffset.x
+        offsetWidth = offsetWidth + (screenWidth + lineSpace)*0.5
+        let currentIndex = Int(offsetWidth / (screenWidth + lineSpace))
+        if currentIndex < imgAry.count && currentIndex != currentPage {
+            currentPage = currentIndex
+            print("========== index= \(currentPage)")
+            pageControl.currentPage = currentPage
+        }
     }
 }
 
@@ -234,46 +297,6 @@ extension GHPhotoBroserViewController: GHPanPhotoDelegate {
             break
         default:
             break
-        }
-    }
-}
-
-extension GHPhotoBroserViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imgAry.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GHBrowserCollectionViewCellID", for: indexPath) as! GHBrowserCollectionViewCell
-        cell.browserView.panDelegate = self
-        cell.tapDismissClosure = {[weak self] in
-            self?.transitionContainerView?.window?.windowLevel = UIWindow.Level(rawValue: 0)
-            self?.dismiss(animated: true, completion: {
-            })
-        }
-        cell.image = imgAry[indexPath.item]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        print(indexPath.item)
-        let theCell = cell as! GHBrowserCollectionViewCell
-        theCell.browserView.setZoomScale(1.0, animated: false)
-    }
-    
-    //MARK: - scrollViewDelegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        var offsetWidth = scrollView.contentOffset.x
-        offsetWidth = offsetWidth + (screenWidth + lineSpace)*0.5
-        let currentIndex = Int(offsetWidth / (screenWidth + lineSpace))
-        if currentIndex < imgAry.count && currentIndex != currentPage {
-            currentPage = currentIndex
-            print("========== index= \(currentPage)")
-            pageControl.currentPage = currentPage
         }
     }
 }

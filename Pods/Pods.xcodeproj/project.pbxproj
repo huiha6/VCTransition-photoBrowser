@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C677E8E5BB78D430CCB2BF72DF1F69D /* GHPhotoBrowser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AC00A104870B6CF4EF331BF01C37C /* GHPhotoBrowser-dummy.m */; };
+		5997794A755A25BD7FED2F46392D494B /* GHPhotoBroserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02BB0ECB66BA49680A500AD3410A243 /* GHPhotoBroserViewController.swift */; };
+		651AA2241801A4C00428C27F3B4D461F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF2A2B0720AE923C22BED3192888BE0 /* UIKit.framework */; };
+		719DC530493BA0F1D1D5BE14C15F1558 /* GHBrowserCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F79FB709B9E502B6E4765803047387 /* GHBrowserCollectionView.swift */; };
+		73C3ADBF22AE2F4F6DA2BF206F6D232B /* GHPhotoBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1060F43E71E3DCE3A57B52773E1DF1F7 /* GHPhotoBrowserView.swift */; };
+		7B7C20A1EE497EAE4E96D0E1C871468F /* Pods-GHPhotoBrowser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B6CFAF0268B74BB656A0FC004E0932 /* Pods-GHPhotoBrowser-dummy.m */; };
+		82698F95587BD79555EFA92B9B43E56A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */; };
+		8512A5A2A2A01EE8B3392847A084C47C /* GHPhotoBrowserPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA6000B5326C223CEDD7F87A143BCE /* GHPhotoBrowserPresentAnimator.swift */; };
+		8EC5C6BDD07946BBC2F867097980C28E /* Pods-GHPhotoBrowser-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F7A2BCD44BFE2552B5AB18DAB7050A1E /* Pods-GHPhotoBrowser-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABE2B853770F85A0D4802C52D20A2E30 /* GHBrowserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3954327E95A775D53658B3A38A26DC8 /* GHBrowserCollectionViewCell.swift */; };
+		B975B6CDE8E29827C289B7E99D7CEC89 /* GHPanPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BCE3B4EE843C4F930308BA0C18A44F /* GHPanPhotoDelegate.swift */; };
+		C74399C93D937E3B7FDF08879AE3FB7F /* GHPhotoBrowser-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E42D8CAA0EC7DD44F90A2513ED076F2 /* GHPhotoBrowser-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5ACECE02CE74BED77DEABA05A6CA6C8 /* GHPhotoBrowserTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9FDDEADB6EDFE2EFF73B39630898D /* GHPhotoBrowserTransitionDelegate.swift */; };
+		E786C116017D549F63D01F8735E05C93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */; };
+		EBB076B1F7D3A33AC7E0CD9C8BD955CD /* GHPhotoBrowserDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5FAE7130FA8FF8159200C728F9401B /* GHPhotoBrowserDismissAnimator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		698DF46C1438E24707C2BA492BF2D988 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FE1BD5B976D87BD1B80441B6152DF87;
+			remoteInfo = GHPhotoBrowser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B5B2801354B4E7BDF172CD72C779AB4 /* GHPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GHPhotoBrowser.framework; path = GHPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1060F43E71E3DCE3A57B52773E1DF1F7 /* GHPhotoBrowserView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserView.swift; sourceTree = "<group>"; };
+		1F6AC00A104870B6CF4EF331BF01C37C /* GHPhotoBrowser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GHPhotoBrowser-dummy.m"; sourceTree = "<group>"; };
+		2EDDF231B2A3C146AA1C3C73B92BEEE4 /* Pods-GHPhotoBrowser-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GHPhotoBrowser-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3B31039AC7B79A2CCD2BFDB5C2FF7651 /* Pods-GHPhotoBrowser-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GHPhotoBrowser-Info.plist"; sourceTree = "<group>"; };
+		40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4CD9B6685EC5D12D7199C95196BB597E /* GHPhotoBrowser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GHPhotoBrowser-prefix.pch"; sourceTree = "<group>"; };
+		4ECA868CEDB3142453BCA4B782814143 /* Pods-GHPhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GHPhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
+		58F176F44B718F10AF6491B4D6734E24 /* GHPhotoBrowser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GHPhotoBrowser.xcconfig; sourceTree = "<group>"; };
+		59DA6000B5326C223CEDD7F87A143BCE /* GHPhotoBrowserPresentAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserPresentAnimator.swift; sourceTree = "<group>"; };
+		62B6CFAF0268B74BB656A0FC004E0932 /* Pods-GHPhotoBrowser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GHPhotoBrowser-dummy.m"; sourceTree = "<group>"; };
+		63A9FDDEADB6EDFE2EFF73B39630898D /* GHPhotoBrowserTransitionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserTransitionDelegate.swift; sourceTree = "<group>"; };
+		6FF77A616D720A5A782EFE3C42D7B7CB /* Pods-GHPhotoBrowser-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GHPhotoBrowser-acknowledgements.plist"; sourceTree = "<group>"; };
+		7B02413D72F723978204A583E1F0EA32 /* GHPhotoBrowser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GHPhotoBrowser.modulemap; sourceTree = "<group>"; };
+		89CECA778CD76359BD7A08D1D2B92949 /* Pods-GHPhotoBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GHPhotoBrowser.release.xcconfig"; sourceTree = "<group>"; };
+		89F79FB709B9E502B6E4765803047387 /* GHBrowserCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GHBrowserCollectionView.swift; sourceTree = "<group>"; };
+		8D5FAE7130FA8FF8159200C728F9401B /* GHPhotoBrowserDismissAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserDismissAnimator.swift; sourceTree = "<group>"; };
+		92BCE3B4EE843C4F930308BA0C18A44F /* GHPanPhotoDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GHPanPhotoDelegate.swift; sourceTree = "<group>"; };
+		95928777233BADFC7EBB820698DF3150 /* Pods-GHPhotoBrowser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GHPhotoBrowser.modulemap"; sourceTree = "<group>"; };
+		9CC1087D4DE9A642F0E8985669778628 /* Pods_GHPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GHPhotoBrowser.framework; path = "Pods-GHPhotoBrowser.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E42D8CAA0EC7DD44F90A2513ED076F2 /* GHPhotoBrowser-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GHPhotoBrowser-umbrella.h"; sourceTree = "<group>"; };
+		B175EADD3964B2EA6C80A19A7C5E8009 /* GHPhotoBrowser-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GHPhotoBrowser-Info.plist"; sourceTree = "<group>"; };
+		ECF2A2B0720AE923C22BED3192888BE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		F02BB0ECB66BA49680A500AD3410A243 /* GHPhotoBroserViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GHPhotoBroserViewController.swift; sourceTree = "<group>"; };
+		F3954327E95A775D53658B3A38A26DC8 /* GHBrowserCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GHBrowserCollectionViewCell.swift; sourceTree = "<group>"; };
+		F7A2BCD44BFE2552B5AB18DAB7050A1E /* Pods-GHPhotoBrowser-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GHPhotoBrowser-umbrella.h"; sourceTree = "<group>"; };
+		FEA31753C2EB696B542CA81E85B70F2F /* Pods-GHPhotoBrowser-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GHPhotoBrowser-frameworks.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B6DFA054B33B1D18D967DE011DD73E12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E786C116017D549F63D01F8735E05C93 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0CA8F30F5BD1784C9ABB1D8D9FC229 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82698F95587BD79555EFA92B9B43E56A /* Foundation.framework in Frameworks */,
+				651AA2241801A4C00428C27F3B4D461F /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		131F8611A7B93846D4F19764594767EA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E6E2C16DA04DF993B759E3280C2247ED /* GHPhotoBrowser */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E169A450ED27AC725DF52953F66D11E0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2A814C822D3CD5462ED1E66852640A56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B5B2801354B4E7BDF172CD72C779AB4 /* GHPhotoBrowser.framework */,
+				9CC1087D4DE9A642F0E8985669778628 /* Pods_GHPhotoBrowser.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		530B44D08BA58D9D527D72DCB25EEF6B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				634F67D804C53465C9B9AA883E366D5E /* Pods-GHPhotoBrowser */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		634F67D804C53465C9B9AA883E366D5E /* Pods-GHPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				95928777233BADFC7EBB820698DF3150 /* Pods-GHPhotoBrowser.modulemap */,
+				2EDDF231B2A3C146AA1C3C73B92BEEE4 /* Pods-GHPhotoBrowser-acknowledgements.markdown */,
+				6FF77A616D720A5A782EFE3C42D7B7CB /* Pods-GHPhotoBrowser-acknowledgements.plist */,
+				62B6CFAF0268B74BB656A0FC004E0932 /* Pods-GHPhotoBrowser-dummy.m */,
+				FEA31753C2EB696B542CA81E85B70F2F /* Pods-GHPhotoBrowser-frameworks.sh */,
+				3B31039AC7B79A2CCD2BFDB5C2FF7651 /* Pods-GHPhotoBrowser-Info.plist */,
+				F7A2BCD44BFE2552B5AB18DAB7050A1E /* Pods-GHPhotoBrowser-umbrella.h */,
+				4ECA868CEDB3142453BCA4B782814143 /* Pods-GHPhotoBrowser.debug.xcconfig */,
+				89CECA778CD76359BD7A08D1D2B92949 /* Pods-GHPhotoBrowser.release.xcconfig */,
+			);
+			name = "Pods-GHPhotoBrowser";
+			path = "Target Support Files/Pods-GHPhotoBrowser";
+			sourceTree = "<group>";
+		};
+		8775272C0128FFE3D5DEF9119AEA64DC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B02413D72F723978204A583E1F0EA32 /* GHPhotoBrowser.modulemap */,
+				58F176F44B718F10AF6491B4D6734E24 /* GHPhotoBrowser.xcconfig */,
+				1F6AC00A104870B6CF4EF331BF01C37C /* GHPhotoBrowser-dummy.m */,
+				B175EADD3964B2EA6C80A19A7C5E8009 /* GHPhotoBrowser-Info.plist */,
+				4CD9B6685EC5D12D7199C95196BB597E /* GHPhotoBrowser-prefix.pch */,
+				9E42D8CAA0EC7DD44F90A2513ED076F2 /* GHPhotoBrowser-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GHPhotoBrowser";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				131F8611A7B93846D4F19764594767EA /* Pods */,
+				2A814C822D3CD5462ED1E66852640A56 /* Products */,
+				530B44D08BA58D9D527D72DCB25EEF6B /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		E169A450ED27AC725DF52953F66D11E0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */,
+				ECF2A2B0720AE923C22BED3192888BE0 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		E6E2C16DA04DF993B759E3280C2247ED /* GHPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				89F79FB709B9E502B6E4765803047387 /* GHBrowserCollectionView.swift */,
+				F3954327E95A775D53658B3A38A26DC8 /* GHBrowserCollectionViewCell.swift */,
+				92BCE3B4EE843C4F930308BA0C18A44F /* GHPanPhotoDelegate.swift */,
+				F02BB0ECB66BA49680A500AD3410A243 /* GHPhotoBroserViewController.swift */,
+				8D5FAE7130FA8FF8159200C728F9401B /* GHPhotoBrowserDismissAnimator.swift */,
+				59DA6000B5326C223CEDD7F87A143BCE /* GHPhotoBrowserPresentAnimator.swift */,
+				63A9FDDEADB6EDFE2EFF73B39630898D /* GHPhotoBrowserTransitionDelegate.swift */,
+				1060F43E71E3DCE3A57B52773E1DF1F7 /* GHPhotoBrowserView.swift */,
+				8775272C0128FFE3D5DEF9119AEA64DC /* Support Files */,
+			);
+			name = GHPhotoBrowser;
+			path = GHPhotoBrowser;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0D52AF1DF9D0E931E7AB5401ED24FED1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EC5C6BDD07946BBC2F867097980C28E /* Pods-GHPhotoBrowser-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A95E88D48A9CFE735F88098D251FC422 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C74399C93D937E3B7FDF08879AE3FB7F /* GHPhotoBrowser-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5FE1BD5B976D87BD1B80441B6152DF87 /* GHPhotoBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4CA445157972F99191CEB6DED307630 /* Build configuration list for PBXNativeTarget "GHPhotoBrowser" */;
+			buildPhases = (
+				A95E88D48A9CFE735F88098D251FC422 /* Headers */,
+				9263DD71DC42026A52C3945716880881 /* Sources */,
+				CA0CA8F30F5BD1784C9ABB1D8D9FC229 /* Frameworks */,
+				170D285DB693F739CE2FCBDA37F91587 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GHPhotoBrowser;
+			productName = GHPhotoBrowser;
+			productReference = 0B5B2801354B4E7BDF172CD72C779AB4 /* GHPhotoBrowser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A836C04CBBE458C0CBA3300D7A080BCF /* Pods-GHPhotoBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89149228E83968F2A759A184BBEBB07B /* Build configuration list for PBXNativeTarget "Pods-GHPhotoBrowser" */;
+			buildPhases = (
+				0D52AF1DF9D0E931E7AB5401ED24FED1 /* Headers */,
+				611237A3239B57110673DCC50D8BEFE5 /* Sources */,
+				B6DFA054B33B1D18D967DE011DD73E12 /* Frameworks */,
+				C861FD60A3B01E80CDE0A353C8063DD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8939D0A8D18F39DCA01881A3595BEFCB /* PBXTargetDependency */,
+			);
+			name = "Pods-GHPhotoBrowser";
+			productName = "Pods-GHPhotoBrowser";
+			productReference = 9CC1087D4DE9A642F0E8985669778628 /* Pods_GHPhotoBrowser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 2A814C822D3CD5462ED1E66852640A56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FE1BD5B976D87BD1B80441B6152DF87 /* GHPhotoBrowser */,
+				A836C04CBBE458C0CBA3300D7A080BCF /* Pods-GHPhotoBrowser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		170D285DB693F739CE2FCBDA37F91587 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C861FD60A3B01E80CDE0A353C8063DD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		611237A3239B57110673DCC50D8BEFE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B7C20A1EE497EAE4E96D0E1C871468F /* Pods-GHPhotoBrowser-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9263DD71DC42026A52C3945716880881 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				719DC530493BA0F1D1D5BE14C15F1558 /* GHBrowserCollectionView.swift in Sources */,
+				ABE2B853770F85A0D4802C52D20A2E30 /* GHBrowserCollectionViewCell.swift in Sources */,
+				B975B6CDE8E29827C289B7E99D7CEC89 /* GHPanPhotoDelegate.swift in Sources */,
+				5997794A755A25BD7FED2F46392D494B /* GHPhotoBroserViewController.swift in Sources */,
+				0C677E8E5BB78D430CCB2BF72DF1F69D /* GHPhotoBrowser-dummy.m in Sources */,
+				EBB076B1F7D3A33AC7E0CD9C8BD955CD /* GHPhotoBrowserDismissAnimator.swift in Sources */,
+				8512A5A2A2A01EE8B3392847A084C47C /* GHPhotoBrowserPresentAnimator.swift in Sources */,
+				E5ACECE02CE74BED77DEABA05A6CA6C8 /* GHPhotoBrowserTransitionDelegate.swift in Sources */,
+				73C3ADBF22AE2F4F6DA2BF206F6D232B /* GHPhotoBrowserView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8939D0A8D18F39DCA01881A3595BEFCB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GHPhotoBrowser;
+			target = 5FE1BD5B976D87BD1B80441B6152DF87 /* GHPhotoBrowser */;
+			targetProxy = 698DF46C1438E24707C2BA492BF2D988 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		13A21B0ECA2B0F6CB101016F2009ED31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4ECA868CEDB3142453BCA4B782814143 /* Pods-GHPhotoBrowser.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GHPhotoBrowser/Pods-GHPhotoBrowser-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GHPhotoBrowser/Pods-GHPhotoBrowser.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3B9C384B86249B042344CC97BCAEC560 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58F176F44B718F10AF6491B4D6734E24 /* GHPhotoBrowser.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GHPhotoBrowser/GHPhotoBrowser-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GHPhotoBrowser/GHPhotoBrowser-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GHPhotoBrowser/GHPhotoBrowser.modulemap";
+				PRODUCT_MODULE_NAME = GHPhotoBrowser;
+				PRODUCT_NAME = GHPhotoBrowser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4CE281642D6EE9FAB113046B4B6328A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		6BD256794EE8710512312DCE98DC89E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89CECA778CD76359BD7A08D1D2B92949 /* Pods-GHPhotoBrowser.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GHPhotoBrowser/Pods-GHPhotoBrowser-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GHPhotoBrowser/Pods-GHPhotoBrowser.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6DFA1578582149B7E24AD55CBA30F07A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		AABA55D17A08131A959E78DBC024FFC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58F176F44B718F10AF6491B4D6734E24 /* GHPhotoBrowser.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GHPhotoBrowser/GHPhotoBrowser-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GHPhotoBrowser/GHPhotoBrowser-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GHPhotoBrowser/GHPhotoBrowser.modulemap";
+				PRODUCT_MODULE_NAME = GHPhotoBrowser;
+				PRODUCT_NAME = GHPhotoBrowser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DFA1578582149B7E24AD55CBA30F07A /* Debug */,
+				4CE281642D6EE9FAB113046B4B6328A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89149228E83968F2A759A184BBEBB07B /* Build configuration list for PBXNativeTarget "Pods-GHPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13A21B0ECA2B0F6CB101016F2009ED31 /* Debug */,
+				6BD256794EE8710512312DCE98DC89E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4CA445157972F99191CEB6DED307630 /* Build configuration list for PBXNativeTarget "GHPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AABA55D17A08131A959E78DBC024FFC4 /* Debug */,
+				3B9C384B86249B042344CC97BCAEC560 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

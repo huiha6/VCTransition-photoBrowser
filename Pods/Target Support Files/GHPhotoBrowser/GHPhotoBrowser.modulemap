@@ -1,0 +1,6 @@
+framework module GHPhotoBrowser {
+  umbrella header "GHPhotoBrowser-umbrella.h"
+
+  export *
+  module * { export * }
+}

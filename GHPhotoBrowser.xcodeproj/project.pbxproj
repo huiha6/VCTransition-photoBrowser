@@ -12,6 +12,8 @@
 		224BDF3521F31D680097BFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224BDF3321F31D680097BFD0 /* Main.storyboard */; };
 		224BDF3721F31D690097BFD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224BDF3621F31D690097BFD0 /* Assets.xcassets */; };
 		224BDF3A21F31D690097BFD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224BDF3821F31D690097BFD0 /* LaunchScreen.storyboard */; };
+		81DC777A9C110131835CD1FC /* Pods_GHPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F906B0BF80CD1311682638B5 /* Pods_GHPhotoBrowser.framework */; };
+		A7089389230A4ED300174275 /* GlobalPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7089388230A4ED300174275 /* GlobalPackage.swift */; };
 		A70AE27021F6A11200CC0415 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE26E21F6A11200CC0415 /* MainTabbarController.swift */; };
 		A70AE27121F6A11200CC0415 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE26F21F6A11200CC0415 /* BaseNavigationController.swift */; };
 		A70AE27C21F6A12100CC0415 /* ImgBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE27321F6A12100CC0415 /* ImgBrowserViewController.swift */; };
@@ -20,14 +22,6 @@
 		A70AE28021F6A12100CC0415 /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE27821F6A12100CC0415 /* BrowserView.swift */; };
 		A70AE28321F6A12100CC0415 /* ImgBrowserTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE27B21F6A12100CC0415 /* ImgBrowserTransitionDelegate.swift */; };
 		A70AE28621F6A14000CC0415 /* PublicConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28521F6A14000CC0415 /* PublicConst.swift */; };
-		A70AE28821F6A26800CC0415 /* GHPhotoBroserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28721F6A26800CC0415 /* GHPhotoBroserViewController.swift */; };
-		A70AE28A21F6A28D00CC0415 /* GHBrowserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28921F6A28D00CC0415 /* GHBrowserCollectionViewCell.swift */; };
-		A70AE28C21F6A3A200CC0415 /* GHPhotoBrowserTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28B21F6A3A200CC0415 /* GHPhotoBrowserTransitionDelegate.swift */; };
-		A70AE28E21F6A3D400CC0415 /* GHPhotoBrowserPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28D21F6A3D400CC0415 /* GHPhotoBrowserPresentAnimator.swift */; };
-		A70AE29021F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE28F21F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift */; };
-		A70AE29221F6A43F00CC0415 /* GHPhotoBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70AE29121F6A43F00CC0415 /* GHPhotoBrowserView.swift */; };
-		A7A3305F2306BF04002EA28C /* GHPanPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A3305E2306BF04002EA28C /* GHPanPhotoDelegate.swift */; };
-		A7D1D53721F8039500B675B3 /* GHBrowserCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53621F8039500B675B3 /* GHBrowserCollectionView.swift */; };
 		A7D1D53D21F89B4400B675B3 /* SideBarPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53921F89B4400B675B3 /* SideBarPresentAnimator.swift */; };
 		A7D1D53E21F89B4400B675B3 /* SideBarDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53A21F89B4400B675B3 /* SideBarDismissAnimator.swift */; };
 		A7D1D53F21F89B4400B675B3 /* SideBarTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1D53B21F89B4400B675B3 /* SideBarTransitionDelegate.swift */; };
@@ -42,6 +36,9 @@
 		224BDF3621F31D690097BFD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		224BDF3921F31D690097BFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		224BDF3B21F31D690097BFD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F3A03113CF85C1952CC132F /* Pods-GHPhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GHPhotoBrowser.debug.xcconfig"; path = "Target Support Files/Pods-GHPhotoBrowser/Pods-GHPhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
+		85D315EB5131E48C17FC2B7F /* Pods-GHPhotoBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GHPhotoBrowser.release.xcconfig"; path = "Target Support Files/Pods-GHPhotoBrowser/Pods-GHPhotoBrowser.release.xcconfig"; sourceTree = "<group>"; };
+		A7089388230A4ED300174275 /* GlobalPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPackage.swift; sourceTree = "<group>"; };
 		A70AE26E21F6A11200CC0415 /* MainTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
 		A70AE26F21F6A11200CC0415 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		A70AE27321F6A12100CC0415 /* ImgBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgBrowserViewController.swift; sourceTree = "<group>"; };
@@ -50,18 +47,11 @@
 		A70AE27821F6A12100CC0415 /* BrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
 		A70AE27B21F6A12100CC0415 /* ImgBrowserTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgBrowserTransitionDelegate.swift; sourceTree = "<group>"; };
 		A70AE28521F6A14000CC0415 /* PublicConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicConst.swift; sourceTree = "<group>"; };
-		A70AE28721F6A26800CC0415 /* GHPhotoBroserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHPhotoBroserViewController.swift; sourceTree = "<group>"; };
-		A70AE28921F6A28D00CC0415 /* GHBrowserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHBrowserCollectionViewCell.swift; sourceTree = "<group>"; };
-		A70AE28B21F6A3A200CC0415 /* GHPhotoBrowserTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserTransitionDelegate.swift; sourceTree = "<group>"; };
-		A70AE28D21F6A3D400CC0415 /* GHPhotoBrowserPresentAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserPresentAnimator.swift; sourceTree = "<group>"; };
-		A70AE28F21F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserDismissAnimator.swift; sourceTree = "<group>"; };
-		A70AE29121F6A43F00CC0415 /* GHPhotoBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHPhotoBrowserView.swift; sourceTree = "<group>"; };
-		A7A3305E2306BF04002EA28C /* GHPanPhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHPanPhotoDelegate.swift; sourceTree = "<group>"; };
-		A7D1D53621F8039500B675B3 /* GHBrowserCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHBrowserCollectionView.swift; sourceTree = "<group>"; };
 		A7D1D53921F89B4400B675B3 /* SideBarPresentAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarPresentAnimator.swift; sourceTree = "<group>"; };
 		A7D1D53A21F89B4400B675B3 /* SideBarDismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarDismissAnimator.swift; sourceTree = "<group>"; };
 		A7D1D53B21F89B4400B675B3 /* SideBarTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTransitionDelegate.swift; sourceTree = "<group>"; };
 		A7D1D53C21F89B4400B675B3 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		F906B0BF80CD1311682638B5 /* Pods_GHPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GHPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81DC777A9C110131835CD1FC /* Pods_GHPhotoBrowser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +71,8 @@
 			children = (
 				224BDF2E21F31D680097BFD0 /* GHPhotoBrowser */,
 				224BDF2D21F31D680097BFD0 /* Products */,
+				49623AF94FDA95007CAC18AA /* Pods */,
+				D331472F8A066A1714DF48FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,7 +90,6 @@
 				224BDF2F21F31D680097BFD0 /* AppDelegate.swift */,
 				224BDF3121F31D680097BFD0 /* FirstViewController.swift */,
 				A7D1D53821F8990F00B675B3 /* SideBar */,
-				A70AE26B21F6A02600CC0415 /* PhotoBrowser */,
 				A70AE27221F6A12100CC0415 /* ModalImgBrowser */,
 				A70AE26D21F6A11200CC0415 /* Base */,
 				A70AE28421F6A14000CC0415 /* Public */,
@@ -109,19 +101,13 @@
 			path = GHPhotoBrowser;
 			sourceTree = "<group>";
 		};
-		A70AE26B21F6A02600CC0415 /* PhotoBrowser */ = {
+		49623AF94FDA95007CAC18AA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A70AE28721F6A26800CC0415 /* GHPhotoBroserViewController.swift */,
-				A7D1D53621F8039500B675B3 /* GHBrowserCollectionView.swift */,
-				A70AE29121F6A43F00CC0415 /* GHPhotoBrowserView.swift */,
-				A70AE28921F6A28D00CC0415 /* GHBrowserCollectionViewCell.swift */,
-				A70AE28B21F6A3A200CC0415 /* GHPhotoBrowserTransitionDelegate.swift */,
-				A70AE28D21F6A3D400CC0415 /* GHPhotoBrowserPresentAnimator.swift */,
-				A70AE28F21F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift */,
-				A7A3305E2306BF04002EA28C /* GHPanPhotoDelegate.swift */,
+				4F3A03113CF85C1952CC132F /* Pods-GHPhotoBrowser.debug.xcconfig */,
+				85D315EB5131E48C17FC2B7F /* Pods-GHPhotoBrowser.release.xcconfig */,
 			);
-			path = PhotoBrowser;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		A70AE26D21F6A11200CC0415 /* Base */ = {
@@ -150,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				A70AE28521F6A14000CC0415 /* PublicConst.swift */,
+				A7089388230A4ED300174275 /* GlobalPackage.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -165,6 +152,14 @@
 			path = SideBar;
 			sourceTree = "<group>";
 		};
+		D331472F8A066A1714DF48FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F906B0BF80CD1311682638B5 /* Pods_GHPhotoBrowser.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 224BDF3E21F31D690097BFD0 /* Build configuration list for PBXNativeTarget "GHPhotoBrowser" */;
 			buildPhases = (
+				2617DEBBBF6B9F9D3C453377 /* [CP] Check Pods Manifest.lock */,
 				224BDF2821F31D680097BFD0 /* Sources */,
 				224BDF2921F31D680097BFD0 /* Frameworks */,
 				224BDF2A21F31D680097BFD0 /* Resources */,
+				0D7E4833FD91C7BEA1D0DB07 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,31 +228,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D7E4833FD91C7BEA1D0DB07 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GHPhotoBrowser/Pods-GHPhotoBrowser-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GHPhotoBrowser/GHPhotoBrowser.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GHPhotoBrowser.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GHPhotoBrowser/Pods-GHPhotoBrowser-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2617DEBBBF6B9F9D3C453377 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GHPhotoBrowser-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		224BDF2821F31D680097BFD0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A7D1D53F21F89B4400B675B3 /* SideBarTransitionDelegate.swift in Sources */,
-				A70AE28E21F6A3D400CC0415 /* GHPhotoBrowserPresentAnimator.swift in Sources */,
 				A70AE27121F6A11200CC0415 /* BaseNavigationController.swift in Sources */,
-				A70AE28A21F6A28D00CC0415 /* GHBrowserCollectionViewCell.swift in Sources */,
+				A7089389230A4ED300174275 /* GlobalPackage.swift in Sources */,
 				A70AE28021F6A12100CC0415 /* BrowserView.swift in Sources */,
-				A7D1D53721F8039500B675B3 /* GHBrowserCollectionView.swift in Sources */,
 				A70AE28321F6A12100CC0415 /* ImgBrowserTransitionDelegate.swift in Sources */,
 				224BDF3221F31D680097BFD0 /* FirstViewController.swift in Sources */,
 				A70AE28621F6A14000CC0415 /* PublicConst.swift in Sources */,
-				A70AE28C21F6A3A200CC0415 /* GHPhotoBrowserTransitionDelegate.swift in Sources */,
 				224BDF3021F31D680097BFD0 /* AppDelegate.swift in Sources */,
 				A7D1D53D21F89B4400B675B3 /* SideBarPresentAnimator.swift in Sources */,
 				A70AE27E21F6A12100CC0415 /* ImgBrowserDismissAnimator.swift in Sources */,
 				A7D1D54021F89B4400B675B3 /* SideBarViewController.swift in Sources */,
-				A70AE29221F6A43F00CC0415 /* GHPhotoBrowserView.swift in Sources */,
-				A70AE28821F6A26800CC0415 /* GHPhotoBroserViewController.swift in Sources */,
 				A70AE27D21F6A12100CC0415 /* ImgBrowserPresentAnimator.swift in Sources */,
 				A7D1D53E21F89B4400B675B3 /* SideBarDismissAnimator.swift in Sources */,
-				A7A3305F2306BF04002EA28C /* GHPanPhotoDelegate.swift in Sources */,
-				A70AE29021F6A3FD00CC0415 /* GHPhotoBrowserDismissAnimator.swift in Sources */,
 				A70AE27021F6A11200CC0415 /* MainTabbarController.swift in Sources */,
 				A70AE27C21F6A12100CC0415 /* ImgBrowserViewController.swift in Sources */,
 			);
@@ -399,6 +436,7 @@
 		};
 		224BDF3F21F31D690097BFD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F3A03113CF85C1952CC132F /* Pods-GHPhotoBrowser.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -418,6 +456,7 @@
 		};
 		224BDF4021F31D690097BFD0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85D315EB5131E48C17FC2B7F /* Pods-GHPhotoBrowser.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

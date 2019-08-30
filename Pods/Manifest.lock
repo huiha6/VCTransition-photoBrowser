@@ -1,0 +1,16 @@
+PODS:
+  - GHPhotoBrowser (0.0.5)
+
+DEPENDENCIES:
+  - GHPhotoBrowser (= 0.0.5)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GHPhotoBrowser
+
+SPEC CHECKSUMS:
+  GHPhotoBrowser: a54879a27cb079258d1982e61c50c3859d2b69eb
+
+PODFILE CHECKSUM: 8c40c7e6d8a1c33fcf497ea8f18b8dddd638e066
+
+COCOAPODS: 1.6.1

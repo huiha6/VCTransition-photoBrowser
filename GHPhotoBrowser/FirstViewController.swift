@@ -103,10 +103,10 @@ class FirstViewController: UIViewController {
         /* note  初试后的多图尝试
          多张图片的尝试   包括宽大于高的图片、高大于宽的图片，没有长图(即 在没放大的模式下可上下滑动的长图)
          *///
-        let vc = GHPhotoBroserViewController()
-        let imgAry = [UIImage(named: "test"), UIImage(named: "test1"), UIImage(named: "test2"), UIImage(named: "test3")] as! [UIImage]
-        let imgViewFrameAry = [imgView.frame, imgView1.frame, imgView2.frame, imgView3.frame]
-        vc.show(self, 2, imgAry, imgViewFrameAry)//Int(arc4random_uniform(4))
+//        let vc = GHPhotoBroserViewController()
+//        let imgAry = [UIImage(named: "test"), UIImage(named: "test1"), UIImage(named: "test2"), UIImage(named: "test3")] as! [UIImage]
+//        let imgViewFrameAry = [imgView.frame, imgView1.frame, imgView2.frame, imgView3.frame]
+//        vc.show(self, 2, imgAry, imgViewFrameAry)//Int(arc4random_uniform(4))
     }
 
 }
